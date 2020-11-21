@@ -19,8 +19,19 @@ $.ajax({ //Current Day & City
     method: "GET"
     })
     .then(function(response) {
-        console.log(response);
+        console.log(response);  // DRAFT this is just here for checks during development
 
+    //    for (var i = 0; i < response.length; i++) { //Need another loop/function to decide which breweries are in the recommended list based on distance
+
+                for (var i = 0; i < 11; i++) { //DRAFT.  
+
+                    //appending data to brewery cards
+                    $("#brewNameEl").append("<h6>" + response.list[i].name + "<h6> " + "</br>");
+                            
+
+                };
+
+     //   };  //end outer loop      
 
     });
 
