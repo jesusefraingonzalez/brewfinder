@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/css/uikit.min.css" />    
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit-icons.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Brews & Bucks</title>
+</head>
+
+<body>
+    <div class="uk-container .uk-align-center">
+    <header>
+        <h1 class="h1">Brews & Bucks</h1>
+    </header>
+    </div>
+    
+   <!-- Basic Pseudo-Code -->
+    <!-- Container (mobile first)
+    -identify user location
+
+user input field for THEIR current Zip code
+
+Brewery container
+    - what shows first when user enters APP?
+    -card for each brewery with ride price information (one way & roundtrip?)
+    - need image src for brewery
+    - user previews with slideshow/carousel function
+
+
+User selects brewery and receives message "Have fun & Stay Safe!" 
+
+close or return option
+-->
+
+    <div class="uk-container">
+        <form class="uk-search uk-search-default" id="search-module">
+            <span uk-search-icon></span>
+            <input class="uk-search-input" type="input" placeholder="Search...">
+        </form>
+        <button class="uk-button uk-button-default" value="search">Search</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
