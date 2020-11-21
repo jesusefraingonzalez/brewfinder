@@ -1,3 +1,43 @@
+
+//VARIABLES
+
+
+//API Keys
+
+
+
+//Ajax Calls / Functions
+
+$("#zipbutton").on("click", function (event){  //need to match id to the input button
+    event.preventDefault();
+    
+    var searchzip = "97210" ;  //HARD CODED; need to determine user zip, then associated zip codes
+
+$.ajax({ //Current Day & City
+    
+
+    url: "https://api.openbrewerydb.org/breweries?by_postal=" + searchzip,
+    method: "GET"
+    })
+    .then(function(response) {
+        console.log(response);  // DRAFT this is just here for checks during development
+
+    //    for (var i = 0; i < response.length; i++) { //Need another loop/function to decide which breweries are in the recommended list based on distance
+
+                for (var i = 0; i < 11; i++) { //DRAFT.  
+
+                    //appending data to brewery cards
+                    $("#brewNameEl").append("<h6>" + response.list[i].name + "<h6> " + "</br>");
+                            
+
+                };
+
+     //   };  //end outer loop      
+
+    });
+
+}); //end click handler function
+=======
 // JA.VUNmGAAAAAAAEgASAAAABwAIAAwAAAAAAAAAEgAAAAAAAAH4AAAAFAAAAAAADgAQAAQAAAAIAAwAAAAOAAAAzAAAABwAAAAEAAAAEAAAAJqGtdFpFrM2wYNPw_uyJoqnAAAAv90qsy_0wJLOkCdIsXZvLp4EVD9IfkIFI5U9Ze49UYdR2RCmilXEep7ljRaX_3hgClBvL8Scn8tXCkRsD2gW58bSc1wdvIxarb4_LatPvsW2I9J-94cUxCzkeGfgDQQ4BA9Ivu7m70UW9IQbejoCW7YFJn5R36PCXabwigA_4ijjBtQBSabTdNo_DR4lB6GQPdTkKb70lI_DWf21-dKU-60zpa0xtYgADAAAADmwkcQJnjXH8fFynSQAAABiMGQ4NTgwMy0zOGEwLTQyYjMtODA2ZS03YTRjZjhlMTk2ZWU
 
 // get user's geolocation, lat & long
@@ -20,4 +60,5 @@ $.ajax({
 }).then(function(response){
     console.log(response);
 });
+
 
