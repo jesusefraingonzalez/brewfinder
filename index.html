@@ -9,14 +9,16 @@
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit-icons.min.js"></script>
-
+    <link rel="stylesheet" href="style.css">
     <title>Brews & Bucks</title>
 </head>
 
 <body>
+    <div class="uk-container .uk-align-center">
     <header>
-        <h1>Brews & Bucks</h1>
+        <h1 class="h1">Brews & Bucks</h1>
     </header>
+    </div>
     
    <!-- Basic Pseudo-Code -->
     <!-- Container (mobile first)
@@ -36,11 +38,12 @@ User selects brewery and receives message "Have fun & Stay Safe!"
 close or return option
 -->
 
-    <div class="container">
-        <div id="search-module">
-            <input type="input">
-            <button value="search">Search</button>
-        </div>
+    <div class="uk-container">
+        <form class="uk-search uk-search-default" id="search-module">
+            <span uk-search-icon></span>
+            <input class="uk-search-input" type="input" placeholder="Search...">
+        </form>
+        <button class="uk-button uk-button-default" value="search">Search</button>
     </div>
 
     <script src="script.js"></script>
