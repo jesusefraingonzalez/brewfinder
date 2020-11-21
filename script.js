@@ -10,6 +10,10 @@ var redirectURI = "http://localhost";
 var clientID = "pOdCvyGkBF3wEiz-JDmjtctiegHce-_N";
 var query = "https://api.uber.com/v1.2/requests/estimate";
 var auth = "https://login.uber.com/oauth/v2/authorize?client_id=" + clientID + "&response_type=code&redirect_uri=" + redirectURI;
+
+
+
+
 $.ajax({
     url: query,
     headers: {
