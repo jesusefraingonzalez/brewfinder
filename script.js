@@ -26,7 +26,14 @@ $.ajax({ //Current Day & City
                 for (var i = 0; i < 11; i++) { //DRAFT.  
 
                     //appending data to brewery cards
-                    $("#brewNameEl").append("<h6>" + response.list[i].name + "<h6> " + "</br>");
+                    $("#brewNameEl").append("<p>" + response.list[i].name + "<p>");
+                    $("#brewType").append("<p>" + response.list[i].brewery_type + "<p>");
+                    $("#addressEl").append("<p>" + response.list[i].street + "<p>");
+                    $("#addressEl").append("<p>" + response.list[i].city + "<p>"); //these should probably all be divs not <p's>
+                    $("#addressEl").append("<p>" + response.list[i].state + "<p>");
+                    $("#phoneEl").append("<p>" + response.list[i].phone + "<p>"); //this will need formatting (area)-555-5555
+                    $("#webEl").append("<p>" + response.list[i].website_url + "<p>");
+                    //  $("#").append("<img src>" + TBD + "</img>");  // line for appending image based on type
                             
 
                 };
