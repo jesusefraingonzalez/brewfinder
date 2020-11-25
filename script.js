@@ -8,35 +8,35 @@
 
 //Functions
 
-// get user's GEOLOCATION, LAT & LONG
+// get user's GEOLOCATION, LAT & LONG - WE ONLY NEED THIS IF WE DO A MAPPING API
 
-function userLocation() {
-    if (navigator.geolocation) {
+// function userLocation() {
+//     if (navigator.geolocation) {
 
-       navigator.geolocation.getCurrentPosition(showPosition);
-        } 
-        else {
-          alert("Geolocation is not supported by this browser.");
-        }
-      }
+//        navigator.geolocation.getCurrentPosition(showPosition);
+//         } 
+//         else {
+//           alert("Geolocation is not supported by this browser.");
+//         }
+//       }
 
 
-    // This will get called after getCurrentPosition()
-    function showPosition(position) {
-        // Grab coordinates from the given object
-        var lat = position.coords.latitude;
-        var lon = position.coords.longitude;
-        console.log(lat,lon); //checkpoint
+//     // This will get called after getCurrentPosition()
+//     function showPosition(position) {
+//         // Grab coordinates from the given object
+//         var lat = position.coords.latitude;
+//         var lon = position.coords.longitude;
+//         console.log(lat,lon); //checkpoint
 
-    // Call the distance function, passing on the coordinates 
-    distance(lat, lon);
-    };
+//     // Call the distance function, passing on the coordinates 
+//     distance(lat, lon);
+//     };
 
     
-// Calculates the distance between the user and the lat & lon subset of brewery listings
-function distance(lat, lon) {
+// // Calculates the distance between the user and the lat & lon subset of brewery listings
+// function distance(lat, lon) {
 
-    };
+//     };
 
 
 
@@ -57,8 +57,8 @@ $.ajax({ //Grabs subset of breweries based on user's initial location input
 
 
         //for each brewery element in the closestBrew array
-            var brewlon = response.list.longitude 
-            var brewlat = response.list.latitude 
+            // var brewlon = response.longitude 
+            // var brewlat = response.latitude 
 
     });
 
