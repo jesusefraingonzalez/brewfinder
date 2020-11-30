@@ -19,25 +19,32 @@ function breweryInfo(searchZip) {
         // console.log(response);  
         for (var i = 0; i < response.length; i++) {  
             //create data for brewery cards
-            var newCard = $("<div>").attr("class", "uk-card-body");
-            var brewName = $("<p>").attr("id", "brewNameEL").html(response[i].name);
+            var newCard = $("<div>").attr("class", "uk-card uk-card-default uk-width-1-2@m"); //card container
+            var header = $("<div>").attr("class", "uk-card-header"); //card header
+            var brewName = $("<h3>").attr("id", "brewNameEL").attr("class", "uk-card-title uk-margin-remove-bottom").html(response[i].name);
+            var brewInfo = $("<div>").attr("uk-card-body"); //card body
             var brewType = $("<p>").attr("id", "brewType").html(response[i].brewery_type);
             var brewAddress = $("<p>").attr("id", "addressEl").html(response[i].street + " " + response[i].city + " " + response[i].state + " " + response[i].postal_code + "</p>");
             var brewPhone = $("<p>").attr("id", "phoneEl").html("(" + response[i].phone.substring(0, 3) + ") " + response[i].phone.substring(3, 6) + "-" + response[i].phone.substring(6, 10));
             var brewUrl = $("<a>").attr("href", response[i].website_url).attr("id", "webEl").html(response[i].website_url);
             //adding select button and attaching response data to data-set attribute
-            var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn").attr("data-set", response[i]); 
+            var footer = $("<div>").attr("class", "uk-card-footer"); //card footer
+            var brewChoice = $("<a href>").attr("class", "uk-button uk-button-text").attr("class", "selectBtn").text("Select"); //.attr("data-set", response[i]); 
            // linkPreview(response[i].website_url);
 
-            newCard.append(brewName);
+           
+            newCard.append(header); 
+            header.append(brewName);
+            newCard.append(brewInfo);
             newCard.append(brewType);
             newCard.append(brewAddress);
             newCard.append(brewPhone);
             newCard.append(brewUrl);
-            newCard.append(brewChoice);
+            newCard.append(footer); 
+            footer.append(brewChoice);
             // newCard.append(imageEl);
 
-            $("body").append(newCard);
+            $("body").append(newCard); //appending New Cards to document body
         }
     });
 }
