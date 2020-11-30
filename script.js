@@ -25,6 +25,8 @@ function breweryInfo(searchZip) {
             var brewAddress = $("<p>").attr("id", "addressEl").html(response[i].street + " " + response[i].city + " " + response[i].state + " " + response[i].postal_code + "</p>");
             var brewPhone = $("<p>").attr("id", "phoneEl").html("(" + response[i].phone.substring(0, 3) + ") " + response[i].phone.substring(3, 6) + "-" + response[i].phone.substring(6, 10));
             var brewUrl = $("<a>").attr("href", response[i].website_url).attr("id", "webEl").html(response[i].website_url);
+            //adding select button and attaching response data to data-set attribute
+            var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn").attr("data-set", response[i]); 
            // linkPreview(response[i].website_url);
 
             newCard.append(brewName);
@@ -32,6 +34,7 @@ function breweryInfo(searchZip) {
             newCard.append(brewAddress);
             newCard.append(brewPhone);
             newCard.append(brewUrl);
+            newCard.append(brewChoice);
             // newCard.append(imageEl);
 
             $("body").append(newCard);
@@ -71,9 +74,8 @@ $("#searchBtn").click(function (event) {  //Added button ID
         $("#phoneEl").empty();
         $("#webEl").empty();
 
-    searchZip = $("input").val().trim();
+    searchZip = $("input").val().trim(); //reads the input from the user
     breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
-
 
 }); //end search button click handler function
 
@@ -83,11 +85,11 @@ $("#searchBtn").click(function (event) {  //Added button ID
 $(".selectBtn").click(function (event) {  
     event.preventDefault();
 
-  
+    brewChoice
 
-    selectBrewery = $("input").val().trim();
-    breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
-
+    selectBrewery = //this needs to be a data object 
+    saveList = //needs to push data object to the empty array
+   
 
 }); //end select button click handler function
 
