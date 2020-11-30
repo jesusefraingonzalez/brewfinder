@@ -29,7 +29,7 @@ function grabZip(searchZip) {
             newCard.append(brewAddress);
             newCard.append(brewPhone);
             newCard.append(brewUrl);
-            newCard.append(imageEl);
+            // newCard.append(imageEl);
 
             $("body").append(newCard);
         }
@@ -38,19 +38,18 @@ function grabZip(searchZip) {
 
 //end click handler function
 
-$("#submitZip").on("click", function (event) {
+$("button").click(function (event) {
     event.preventDefault();
-    var zipC = $("#zipButton").val();
-    grabZip(zipC);
+    var zipC = $("input").val();
+    console.log(zipC);
 });
 
 //returns jquery object of website image given website url
 function linkPreview(barLink) {
-    // link api query
+    // link-preview api key and query
     var linkApiKey = "add99689022bb0b11c5fd0a126838bc8";
     var linkQuery = "http://api.linkpreview.net/?key=" + linkApiKey + "&q=" + barLink;
 
-    // TODO get the requested link from the dom
     // ajax query to get the link-preview image from the website
     $.ajax({
         url: linkQuery,
@@ -63,4 +62,4 @@ function linkPreview(barLink) {
 }
 
 grabZip("43215");
-linkPreview("google.com");
+// linkPreview("google.com");
