@@ -1,19 +1,11 @@
-
 //VARIABLES
-//var searchzip= $("#zipButton").val().trim();
 
 //API Keys
 
 
 
-//Ajax Calls / Functions
 
-//$("#zipButton").on("click", function (event){  //need to match id to the input button
-    //event.preventDefault();
-    
-    //var searchzip = "43215" ;  //HARD CODED; need to determine user zip, then associated zip codes
-    function grabZip (searchZip) {
-        $.ajax({ //Current Day & City
+
             
         
             url: "https://api.openbrewerydb.org/breweries?by_postal=" + searchZip,

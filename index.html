@@ -12,6 +12,7 @@
     <!--Google Font Link-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Work+Sans&display=swap" rel="stylesheet">    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Brewfinder</title>
 </head>
 
@@ -48,20 +49,13 @@ close or return option
     <div class="uk-container">
         <form class="uk-search uk-search-default" id="search-module">
             <span uk-search-icon></span>
-            <input class="uk-search-input" type="text" id="zipButton" placeholder="Search...">
+            <input class="uk-search-input" type="input" id="zipButton" placeholder="Enter Zipcode">
         </form>
-        <button class="uk-button uk-button-default search-btn" type="submit" value="search" id="submitZip">Enter your Current Zip Code</button>
+        <button class="uk-button uk-button-default search-btn" id="searchBtn" value="search">Search</button>
     </div>
 
 
     <!-- Card Option one.. 3 separate sections (ex. brewery name, info, select brewery button-->
-<br>
-<div class="uk-container">
-    <div class="uk-card uk-card-default uk-width-1-2@m" id="cardEl">
-    </div>
-
-</div>
-
 <br>
 
 <div class="uk-container">
@@ -70,7 +64,8 @@ close or return option
             <div class="uk-grid-small uk-flex-middle" uk-grid>
                 <div class="uk-width-expand">
                     <h2 class="uk-card-title uk-margin-remove-bottom card-header"> Brewery:</h2>
-                   <h2 class="uk-text-meta uk-margin-remove-top" id="brewNameEl"> <!--<time datetime="2016-04-01T19:00">April 01, 2016</time>--> </h2>
+                   <h2 class="uk-text-meta uk-margin-remove-top" id="brewNameEl"></h2>
+                   <!--<time datetime="2016-04-01T19:00">April 01, 2016</time>--> 
                 </div>
             </div>
         </div>
@@ -86,35 +81,37 @@ close or return option
         <div class="uk-card-body">
             <p class="card-type" id="webEl">Website: </p>
         </div>
+
         <div class="uk-card-footer">
             <a href="#" class="uk-button uk-button-text">select</a>
         </div>
     </div>
 </div>
 <br>
-<div class="uk-container">
-    <div class="uk-card uk-card-default uk-width-1-2@m">
-        <div class="uk-card-header">
-            <div class="uk-grid-small uk-flex-middle" uk-grid>
-                <div class="uk-width-expand">
-                    <h3 class="uk-card-title uk-margin-remove-bottom">Name of brewery here</h3>
-                    <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
+
+    <!-- card option 2 -->
+    <div class="uk-container">
+        <div class="uk-card uk-card-default uk-width-1-2@m">
+            <div class="uk-card-header">
+                <div class="uk-grid-small uk-flex-middle" uk-grid>
+                    <div class="uk-width-expand">
+                        <h3 class="uk-card-title uk-margin-remove-bottom">Name of brewery here</h3>
+                        <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="uk-card-body">
-            <p> Brewery info: ....... </p>
-        </div>
-        <div class="uk-card-footer">
-            <a href="#" class="uk-button uk-button-text">select</a>
+            <div class="uk-card-body">
+                <p> Brewery info: ....... </p>
+            </div>
+            <div class="uk-card-footer">
+                <a href="#" class="uk-button uk-button-text">select</a>
+            </div>
         </div>
     </div>
 </div>
 
-</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>-->
-<script src="./script.js"></script>
+<script src="script.js"></script>
 </body>
 
 </html>
