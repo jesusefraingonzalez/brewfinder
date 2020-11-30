@@ -9,16 +9,13 @@
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit-icons.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Brews & Bucks</title>
+    <!--Google Font Link-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Work+Sans&display=swap" rel="stylesheet">    <link rel="stylesheet" href="style.css">
+    <title>Brewfinder</title>
 </head>
 
 <body>
-    <div class="uk-container .uk-align-center">
-    <header>
-        <h1 class="h1">Brews & Bucks</h1>
-    </header>
-    </div>
     
    <!-- Basic Pseudo-Code -->
     <!-- Container (mobile first)
@@ -38,15 +35,87 @@ User selects brewery and receives message "Have fun & Stay Safe!"
 close or return option
 -->
 
+<div class="uk-container full-body">
+
+<div class="uk-container">
+    <header>
+        <h1 class="h1">BREWFINDER</h1>
+    </header>
+    </div>
+
+
+
     <div class="uk-container">
         <form class="uk-search uk-search-default" id="search-module">
             <span uk-search-icon></span>
-            <input class="uk-search-input" type="input" placeholder="Search...">
+            <input class="uk-search-input" type="text" id="zipButton" placeholder="Search...">
         </form>
-        <button class="uk-button uk-button-default" value="search">Search</button>
+        <button class="uk-button uk-button-default search-btn" type="submit" value="search" id="submitZip">Enter your Current Zip Code</button>
     </div>
 
-    <script src="script.js"></script>
+
+    <!-- Card Option one.. 3 separate sections (ex. brewery name, info, select brewery button-->
+<br>
+<div class="uk-container">
+    <div class="uk-card uk-card-default uk-width-1-2@m" id="cardEl">
+    </div>
+
+</div>
+
+<br>
+
+<div class="uk-container">
+    <div class="uk-card uk-card-default uk-width-1-2@m" id="cardEl">
+        <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <div class="uk-width-expand">
+                    <h2 class="uk-card-title uk-margin-remove-bottom card-header"> Brewery:</h2>
+                   <h2 class="uk-text-meta uk-margin-remove-top" id="brewNameEl"> <!--<time datetime="2016-04-01T19:00">April 01, 2016</time>--> </h2>
+                </div>
+            </div>
+        </div>
+        <div class="uk-card-body">
+            <p class="card-type" id="brewType"> Brewery Type: </p>
+        </div>
+        <div class="uk-card-body">
+            <p class="card-type" id="addressEl"> Address </p>
+        </div>
+        <div class="uk-card-body">
+            <p class="card-type" id="phoneEl"> Phone Number: </p>
+        </div>
+        <div class="uk-card-body">
+            <p class="card-type" id="webEl">Website: </p>
+        </div>
+        <div class="uk-card-footer">
+            <a href="#" class="uk-button uk-button-text">select</a>
+        </div>
+    </div>
+</div>
+<br>
+<div class="uk-container">
+    <div class="uk-card uk-card-default uk-width-1-2@m">
+        <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <div class="uk-width-expand">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">Name of brewery here</h3>
+                    <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
+                </div>
+            </div>
+        </div>
+        <div class="uk-card-body">
+            <p> Brewery info: ....... </p>
+        </div>
+        <div class="uk-card-footer">
+            <a href="#" class="uk-button uk-button-text">select</a>
+        </div>
+    </div>
+</div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>-->
+<script src="./script.js"></script>
 </body>
 
 </html>
+
