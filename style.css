@@ -1,5 +1,32 @@
-.h1 {
-justify-content: center;
-font-family:Georgia, 'Times New Roman', Times, serif;
-color: black;
+.full-body{
+    background-color: #2a3842;
 }
+
+
+.h1 {
+margin-top: 20px;
+font-family: 'Rammetto One', cursive;
+color: #cebb6a;
+}
+
+.uk-card{
+    background-color: #f1e3bb;
+    justify-content: center;
+
+    
+}
+
+.card-header,
+.card-type{
+    color: #2a3842;
+    font-family: 'Work Sans', sans-serif;
+
+}
+
+
+.search-btn,
+.form{
+    background-color: #af5121;
+    color: #f1e3bb;
+}
+
