@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/css/uikit.min.css" />    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/css/uikit.min.css" />
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit-icons.min.js"></script>
@@ -14,15 +14,7 @@
 </head>
 
 <body>
-
-    <div class="uk-container .uk-align-center">
-    <header>
-        <h1 class="h1">Brews & Bucks</h1>
-    </header>
-    </div>
-
-    
-   <!-- Basic Pseudo-Code -->
+    <!-- Basic Pseudo-Code -->
     <!-- Container (mobile first)
     -identify user location
 
@@ -41,9 +33,9 @@ close or return option
 -->
 
     <div class="uk-container .uk-align-center">
-    <header>
-        <h1 class="h1">Brews & Bucks</h1>
-    </header>
+        <header>
+            <h1 class="h1">Brews & Bucks</h1>
+        </header>
     </div>
 
 
@@ -58,56 +50,58 @@ close or return option
 
 
     <!-- Card Option one.. 3 separate sections (ex. brewery name, info, select brewery button-->
-<br>
+    <br>
 
-<div class="uk-container">
-    <div class="uk-card uk-card-default uk-width-1-2@m">
-        <div class="uk-card-header">
-            <div class="uk-grid-small uk-flex-middle" uk-grid>
-                <div class="uk-width-expand">
-                    <h3 class="uk-card-title uk-margin-remove-bottom"></h3>
-                   <p class="uk-text-meta uk-margin-remove-top" id="brewNameEl"> <!--<time datetime="2016-04-01T19:00">April 01, 2016</time>--> </p>
+    <div class="uk-container">
+        <div class="uk-card uk-card-default uk-width-1-2@m">
+            <div class="uk-card-header">
+                <div class="uk-grid-small uk-flex-middle" uk-grid>
+                    <div class="uk-width-expand">
+                        <h3 class="uk-card-title uk-margin-remove-bottom"></h3>
+                        <p class="uk-text-meta uk-margin-remove-top" id="brewNameEl">
+                            <!--<time datetime="2016-04-01T19:00">April 01, 2016</time>-->
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="uk-card-body" id="brewType">
-            <p> Brewery Type: </p>
-        </div>
-        <div class="uk-card-body" id="addressEl">
-            <p> Address </p>
-        </div>
-        <div class="uk-card-body" id="phoneEl">
-            <p> Phone Number: </p>
-        </div>
-        <div class="uk-card-body" id="webEl">
-            <p>Website: </p>
-        </div>
-        <div class="uk-card-footer">
-            <a href="#" class="uk-button uk-button-text">select</a>
-        </div>
-    </div>
-</div>
-<br>
-<div class="uk-container">
-    <div class="uk-card uk-card-default uk-width-1-2@m">
-        <div class="uk-card-header">
-            <div class="uk-grid-small uk-flex-middle" uk-grid>
-                <div class="uk-width-expand">
-                    <h3 class="uk-card-title uk-margin-remove-bottom">Name of brewery here</h3>
-                    <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
-                </div>
+
+            <div class="uk-card-body">
+                <p id="brewType"> Brewery Type: </p>
+                <p id="addressEl">Address:</p>
+                <p id="phoneEl">Phone Number: </p>
+                <p id="webEl">Website: </p>
+            </div>
+
+
+            <div class="uk-card-footer">
+                <a href="#" class="uk-button uk-button-text">select</a>
             </div>
         </div>
-        <div class="uk-card-body">
-            <p> Brewery info: ....... </p>
-        </div>
-        <div class="uk-card-footer">
-            <a href="#" class="uk-button uk-button-text">select</a>
+    </div>
+    <br>
+
+    <!-- card option 2 -->
+    <div class="uk-container">
+        <div class="uk-card uk-card-default uk-width-1-2@m">
+            <div class="uk-card-header">
+                <div class="uk-grid-small uk-flex-middle" uk-grid>
+                    <div class="uk-width-expand">
+                        <h3 class="uk-card-title uk-margin-remove-bottom">Name of brewery here</h3>
+                        <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01,
+                                2016</time></p>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-card-body">
+                <p> Brewery info: ....... </p>
+            </div>
+            <div class="uk-card-footer">
+                <a href="#" class="uk-button uk-button-text">select</a>
+            </div>
         </div>
     </div>
-</div>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
 </body>
 
