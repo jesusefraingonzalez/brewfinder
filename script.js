@@ -44,7 +44,7 @@ function breweryInfo(searchZip) {
             footer.append(brewChoice);
             // newCard.append(imageEl);
 
-            $("body").append(newCard); //appending New Cards to document body
+            $("#mainContainer").append(newCard); //appending New Cards to main container
         }
     });
 }
