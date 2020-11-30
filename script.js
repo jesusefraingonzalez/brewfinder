@@ -1,64 +1,15 @@
+//VARIABLES
+
 var searchZip;
 
-// click-handler for getting the desired zip code
-$("#searchBtn").click(function (event) {  //Added button ID
-    event.preventDefault();
+var selectBrewery;
 
-    searchZip = $("input").val().trim();
-    breweryInfo(searchZip);
-
-    
- //   var searchzip = "97210" ;  //HARD CODED; need to determine user zip, then associated zip codes
-
-$.ajax({ //Current Day & City
-    
-
-    url: "https://api.openbrewerydb.org/breweries?by_postal=" + searchZip,
-    method: "GET"
-    })
-    .then(function(response) {
-        console.log(response);  // DRAFT this is just here for checks during development
+var saveList= []; //empty array for list of previously chosen breweries
 
 
-                for (var i = 0; i < 11; i++) { //DRAFT.  
-
-                    //appending data to brewery cards
-                    $("#brewNameEl").append("<p>" + response.list[i].name + "<p>");
-                    $("#brewType").append("<p>" + response.list[i].brewery_type + "<p>");
-                    $("#addressEl").append("<p>" + response.list[i].street + "<p>");
-                    $("#addressEl").append("<p>" + response.list[i].city + "<p>"); //these should probably all be divs not <p's>
-                    $("#addressEl").append("<p>" + response.list[i].state + "<p>");
-                    $("#phoneEl").append("<p>" + response.list[i].phone + "<p>"); //this will need formatting (area)-555-5555
-                    $("#webEl").append("<p>" + response.list[i].website_url + "<p>");
-                    //  $("#").append("<img src>" + TBD + "</img>");  // line for appending image based on type
-                            
-
-                }; //end loop
-
-    
-
-    }); //end brewery API call
-
-}); //end click handler function
 
 
-//Uber API Info - can we delete??
-
-// var query = "https://api.uber.com/v1.2/requests/estimate";
-
-// $.ajax({
-//     url: query,
-//     method: "POST",
-//     data: {
-//         "start_latitude": 37.7752278,
-//         "start_longitude": -122.4197513,
-//         "end_latitude": 37.7773228,
-//         "end_longitude": -122.4272052
-//     }
-// }).then(function(response){
-//     console.log(response);
-
-// });
+//FUNCTIONS
 
 function breweryInfo(searchZip) {
     $.ajax({
@@ -104,3 +55,38 @@ function linkPreview(barLink) {
         $("body").append(image);
     });
 }
+
+
+
+//EVENTS
+
+// click-handler for getting the desired zip code
+$("#searchBtn").click(function (event) {  //Added button ID
+    event.preventDefault();
+
+    searchZip = $("input").val().trim();
+    breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
+
+
+}); //end search button click handler function
+
+
+
+// click-handler for selecting brwery & saving to local storage
+$("#selectBtn").click(function (event) {  
+    event.preventDefault();
+
+      //emptying html elements from previous search
+    $("#bewNameEl").empty();
+    $("#brewType").empty();
+    $("#addressEl").empty();
+    $("#phoneEl").empty();
+    $("#webEl").empty();
+
+    searchZip = $("input").val().trim();
+    breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
+
+
+}); //end search button click handler function
+var 
+
