@@ -81,14 +81,20 @@ $("#searchBtn").click(function (event) {  //Added button ID
 
 
 
-// click-handler for selecting brwery & saving to local storage
+// click-handler for selecting brewery & saving to local storage  STILL WORKING ON THIS
 $(".selectBtn").click(function (event) {  
     event.preventDefault();
 
-    brewChoice
+    brewChoice;
 
-    selectBrewery = //this needs to be a data object 
-    saveList = //needs to push data object to the empty array
+    selectBrewery; //this needs to be a data object/card of previously selected?
+    saveList; //needs to push data object to the empty array?
+
+    var name = $(this).siblings("#brewNameEl").val();
+    var number = $(this).parent().attr("id");
+
+    // save in localStorage
+    localStorage.setItem(number, name);
    
 
 }); //end select button click handler function
