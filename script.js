@@ -16,8 +16,8 @@ function breweryInfo(searchZip) {
         url: "https://api.openbrewerydb.org/breweries?by_postal=" + searchZip,
         method: "GET"
     }).then(function (response) {
-        // console.log(response);  // DRAFT this is just here for checks during development
-        for (var i = 0; i < response.length; i++) { //DRAFT.  
+        // console.log(response);  
+        for (var i = 0; i < response.length; i++) {  
             //create data for brewery cards
             var newCard = $("<div>").attr("class", "uk-card-body");
             var brewName = $("<p>").attr("id", "brewNameEL").html(response[i].name);
@@ -64,6 +64,13 @@ function linkPreview(barLink) {
 $("#searchBtn").click(function (event) {  //Added button ID
     event.preventDefault();
 
+        //emptying html elements from previous search
+        $("#brewNameEl").empty();
+        $("#brewType").empty();
+        $("#addressEl").empty();
+        $("#phoneEl").empty();
+        $("#webEl").empty();
+
     searchZip = $("input").val().trim();
     breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
 
@@ -73,20 +80,15 @@ $("#searchBtn").click(function (event) {  //Added button ID
 
 
 // click-handler for selecting brwery & saving to local storage
-$("#selectBtn").click(function (event) {  
+$(".selectBtn").click(function (event) {  
     event.preventDefault();
 
-      //emptying html elements from previous search
-    $("#bewNameEl").empty();
-    $("#brewType").empty();
-    $("#addressEl").empty();
-    $("#phoneEl").empty();
-    $("#webEl").empty();
+  
 
-    searchZip = $("input").val().trim();
+    selectBrewery = $("input").val().trim();
     breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
 
 
-}); //end search button click handler function
-var 
+}); //end select button click handler function
+
 
