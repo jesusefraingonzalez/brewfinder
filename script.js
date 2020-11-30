@@ -1,15 +1,14 @@
-//VARIABLES
-//var searchzip= $("#zipButton").val().trim();
+// click-handler for getting the desired zip code
+// TODO : need to determine user zip, then associated zip codes
+var zipCode;
+$("button").click(function (event) {
+    event.preventDefault();
+    zipCode = $("input").val().trim();
+    breweryInfo(zipCode);
+});
 
-//API Keys
-
-
-
-//Ajax Calls / Functions
-
-//var searchzip = "43215" ;  //HARD CODED; need to determine user zip, then associated zip codes
-function grabZip(searchZip) {
-    $.ajax({ //Current Day & City
+function breweryInfo(searchZip) {
+    $.ajax({
         url: "https://api.openbrewerydb.org/breweries?by_postal=" + searchZip,
         method: "GET"
     }).then(function (response) {
@@ -21,7 +20,7 @@ function grabZip(searchZip) {
             var brewType = $("<p>").attr("id", "brewType").html(response[i].brewery_type);
             var brewAddress = $("<p>").attr("id", "addressEl").html(response[i].street + " " + response[i].city + " " + response[i].state + " " + response[i].postal_code + "</p>");
             var brewPhone = $("<p>").attr("id", "phoneEl").html("(" + response[i].phone.substring(0, 3) + ") " + response[i].phone.substring(3, 6) + "-" + response[i].phone.substring(6, 10));
-            var brewUrl = $("<a>")/*.attr("href", response[i].website_url)*/.attr("id", "webEl").html(response[i].website_url);
+            var brewUrl = $("<a>").attr("href", response[i].website_url).attr("id", "webEl").html(response[i].website_url);
            // linkPreview(response[i].website_url);
 
             newCard.append(brewName);
@@ -36,15 +35,7 @@ function grabZip(searchZip) {
     });
 }
 
-//end click handler function
-
-$("button").click(function (event) {
-    event.preventDefault();
-    var zipC = $("input").val();
-    console.log(zipC);
-});
-
-//returns jquery object of website image given website url
+//appends website image given url using link preview api
 function linkPreview(barLink) {
     // link-preview api key and query
     var linkApiKey = "add99689022bb0b11c5fd0a126838bc8";
@@ -60,6 +51,3 @@ function linkPreview(barLink) {
         $("body").append(image);
     });
 }
-
-grabZip("43215");
-// linkPreview("google.com");
