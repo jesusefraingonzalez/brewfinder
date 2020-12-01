@@ -26,9 +26,11 @@ function breweryInfo(searchZip) {
             var brewPhone = $("<p>").attr("id", "phoneEl").html("(" + response[i].phone.substring(0, 3) + ") " + response[i].phone.substring(3, 6) + "-" + response[i].phone.substring(6, 10));
             var brewUrl = $("<a>").attr("href", response[i].website_url).attr("id", "webEl").html(response[i].website_url);
             //adding select button and attaching response data to data-set attribute
-            var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn"); 
-                brewChoice.addClass("name").attr("data-name", response[i].name); //adding brew name data attribute to store on click
-            //    brewChoice.addClass("info").attr("data-info", response[i]); //adding complete data object to call on click
+            var brewChoice = $("<a href>").attr("class", "uk-button uk-button-default").attr("id", "favoritesBtn").attr("class", "selectBtn").text("Favorite"); //.attr("data-set", response[i]); 
+
+            //var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn"); 
+               brewChoice.addClass("name").attr("data-name", response[i].name); //adding brew name data attribute to store on click
+               brewChoice.addClass("info").attr("data-info", response[i]); //adding complete data object to call on click
            // linkPreview(response[i].website_url);
 
                     newCard.append(brewName);
@@ -40,6 +42,7 @@ function breweryInfo(searchZip) {
                     // newCard.append(imageEl);
 
                     $("body").append(newCard);
+                    
 
 
         }
