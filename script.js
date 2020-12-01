@@ -95,8 +95,20 @@ $(".selectBtn").click(function (event) {
 
     // save in localStorage
     localStorage.setItem(number, name);
-   
 
 }); //end select button click handler function
 
+
+
+// load local storage data when Favorites button is clicked
+$("#favoritesBtn").click(function (event) {  
+    event.preventDefault();
+
+    for (var i = 0; i < saveList.length; i++) {  
+      
+        $([i].name).val(localStorage.getItem([i]));
+    
+    };
+
+}); //end Favorites button click handler function
 
