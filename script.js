@@ -38,6 +38,8 @@ function breweryInfo(searchZip) {
             // newCard.append(imageEl);
 
             $("body").append(newCard);
+
+            walkscore(newCard);
         }
     });
 }
@@ -58,6 +60,26 @@ function linkPreview(barLink) {
         $("body").append(image);
     });
 }
+
+
+//JUST FOR FUN!  Walkscore function
+function walkscore(newCard) {  //pass in brewAddress
+    // link-preview api key and query
+  //  var parseAddress = brewAddress.parse
+    var walkApiKey = "24a4833a842a381a91029102e56b0637";
+    var walkQuery = "https://api.walkscore.com/score?format=json&address=1119%8th%20Avenue%20Seattle%20WA%2098101&lat=47.6085&lon=-122.3295&transit=1&bike=1&wsapikey=" + walkApiKey;
+
+    // ajax query to get the link-preview image from the website
+    $.ajax({
+        url: walkQuery,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+        var walkscore = $("<h3>" + "Walkscore=" + response.walkscore + "</h3>");
+        newCard.append(walkscore);
+    });
+}
+
 
 
 
