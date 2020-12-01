@@ -8,7 +8,6 @@ var saveList= []; //empty array for list of previously chosen breweries
 
 
 
-
 //FUNCTIONS
 
 function breweryInfo(searchZip) {
@@ -45,6 +44,8 @@ function breweryInfo(searchZip) {
             // newCard.append(imageEl);
 
             $("#mainContainer").append(newCard); //appending New Cards to main
+           
+
         }
     });
 }
