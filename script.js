@@ -26,18 +26,22 @@ function breweryInfo(searchZip) {
             var brewPhone = $("<p>").attr("id", "phoneEl").html("(" + response[i].phone.substring(0, 3) + ") " + response[i].phone.substring(3, 6) + "-" + response[i].phone.substring(6, 10));
             var brewUrl = $("<a>").attr("href", response[i].website_url).attr("id", "webEl").html(response[i].website_url);
             //adding select button and attaching response data to data-set attribute
-            var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn").attr("data-set", response[i]); 
+            var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn"); 
+                brewChoice.addClass("name").attr("data-name", response[i].name); //adding brew name data attribute to store on click
+            //    brewChoice.addClass("info").attr("data-info", response[i]); //adding complete data object to call on click
            // linkPreview(response[i].website_url);
 
-            newCard.append(brewName);
-            newCard.append(brewType);
-            newCard.append(brewAddress);
-            newCard.append(brewPhone);
-            newCard.append(brewUrl);
-            newCard.append(brewChoice);
-            // newCard.append(imageEl);
+                    newCard.append(brewName);
+                    newCard.append(brewType);
+                    newCard.append(brewAddress);
+                    newCard.append(brewPhone);
+                    newCard.append(brewUrl);
+                    newCard.append(brewChoice);
+                    // newCard.append(imageEl);
 
-            $("body").append(newCard);
+                    $("body").append(newCard);
+
+
         }
     });
 }
@@ -81,27 +85,23 @@ $("#searchBtn").click(function (event) {  //Added button ID
 
 
 
-// click-handler for selecting brewery & saving to local storage  STILL WORKING ON THIS
+// click-handler for selecting brewery & saving to local storage 
 $(".selectBtn").click(function (event) {  
     event.preventDefault();
 
-    brewChoice;
-
-    selectBrewery; //this needs to be a data object/card of previously selected?
-    saveList; //needs to push data object to the empty array?
-
-    var name = $(this).siblings("#brewNameEl").val();
-    var number = $(this).parent().attr("id");
-
-    // save in localStorage
-    localStorage.setItem(number, name);
+    //capturing brew name from data attribute; storing name in array
+    var saveName = $(this).attr("data-name");
+    saveList.push(saveName);
+    
+    // save in localStorage under key "index"
+    localStorage.setItem("index", saveName);
 
 }); //end select button click handler function
 
 
 
 // load local storage data when Favorites button is clicked
-$("#favoritesBtn").click(function (event) {  
+$("#favoritesBtn").click(function (event, saveList) {  
     event.preventDefault();
 
     for (var i = 0; i < saveList.length; i++) {  
@@ -110,5 +110,5 @@ $("#favoritesBtn").click(function (event) {
     
     };
 
-}); //end Favorites button click handler function
+}); //end Favorites button function
 
