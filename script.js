@@ -101,12 +101,16 @@ $(".selectBtn").click(function (event) {
 
 
 // load local storage data when Favorites button is clicked
-$("#favoritesBtn").click(function (event, saveList) {  
+$("#favoritesBtn").click(function (event, saveList) {  //need Favorites button
     event.preventDefault();
 
     for (var i = 0; i < saveList.length; i++) {  
       
-        $([i].name).val(localStorage.getItem([i]));
+        var addFavorite= $([i]).val(localStorage.getItem([i]));
+
+        var favList = $("<div>").attr("class", "uk-card-body");
+        favList.append(addFavorite)
+        $("#favorites").append.favList //appending to Favorites div
     
     };
 
