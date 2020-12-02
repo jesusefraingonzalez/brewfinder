@@ -140,7 +140,7 @@ $("#favoritesBtn").click(function (event, saveList) {  //need Favorites button
     console.log("hello");
     for (var i = 0; (i < saveList.length); i++) {  //NOT sure that saveList is passing into this function
 
-        var addFavorite = $([i]).val(localStorage.getItem([i]));
+        var addFavorite = $([i]).val(localStorage.getItem([i])); //not correct code
 
         var favList = $("<div>").attr("class", "uk-card-body");
         favList.append(addFavorite)
