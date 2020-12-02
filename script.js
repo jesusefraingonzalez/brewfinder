@@ -46,7 +46,7 @@ function breweryInfo(searchZip) {
             newCard.append(brewUrl);
             newCard.append(footer);
             footer.append(brewChoice);
-         //   newCard.append(imageEl);
+         //   image appends in if/else statement
 
             $("#mainContainer").append(newCard); //appending New Cards to main
 
@@ -75,17 +75,15 @@ function breweryInfo(searchZip) {
                                     method: "GET"
                                 }).then(function (response) {
                                     console.log(response);
-                                    //return $("<img>").attr("src", response.image);
-                                  //  $("body").append(image);
 
                                     var imageEl = $("<img>").attr("src", response.image).width("150px").height("150px"); 
                             
                                     footer.append(imageEl);
                                 });
-                            }
+                            };
 
 
-        } //end loop
+        }; //end loop
 
         $(".selectBtn").click(function (event) {
 
