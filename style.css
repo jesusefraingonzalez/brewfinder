@@ -1,13 +1,15 @@
-/* Adjusts full body background color */
-.full-body{
+/* html body background color */
+html{
     background-color: #2a3842;
 }
 
 /* Edit H1 type, color & div margin */
 .h1 {
-margin-top: 20px;
+margin-top: 50px;
+margin-bottom: 50px;
 font-family: 'Rammetto One', cursive;
 color: #cebb6a;
+font-size: 80px;
 }
 
 /* edit card background color & content */
@@ -26,9 +28,35 @@ color: #cebb6a;
 
 }
 
-/* edit search bar color & text color */
+/* edit search bar/favorites btn color & text color */
+.fav-btn,
 .search-btn,
 .form{
     background-color: #af5121;
     color: #f1e3bb;
+}
+
+.footer-text{
+text-align:center ;
+padding-bottom: 20px;
+}
+
+.div-footer{
+width: auto;
+margin-top: 100px;
+margin-bottom: 0px;
+background-color: #2a3842;
+}
+
+.instructions{
+margin-left: auto;
+font-family: 'Work Sans', sans-serif;
+color: #f1e3bb;
+font-size: 20px;
+}
+
+#mainContainer{
+    font-family: 'Work Sans', sans-serif;
+    color: #2a3842;
+    
 }
