@@ -8,7 +8,6 @@ var saveList = []; //empty array for list of previously chosen breweries
 
 
 
-
 //FUNCTIONS
 
 function breweryInfo(searchZip) {
@@ -19,12 +18,15 @@ function breweryInfo(searchZip) {
         // console.log(response);  
         for (var i = 0; i < response.length; i++) {
             //create data for brewery cards
-            var newCard = $("<div>").attr("class", "uk-card-body");
-            var brewName = $("<p>").attr("id", "brewNameEL").html(response[i].name);
+            var newCard = $("<div>").attr("class", "uk-card uk-card-default uk-width-1-2@m"); //card container
+            var header = $("<div>").attr("class", "uk-card-header"); //card header
+            var brewName = $("<h3>").attr("id", "brewNameEL").attr("class", "uk-card-title uk-margin-remove-bottom").html(response[i].name);
+            var brewInfo = $("<div>").attr("uk-card-body"); //card body
             var brewType = $("<p>").attr("id", "brewType").html(response[i].brewery_type);
             var brewAddress = $("<p>").attr("id", "addressEl").html(response[i].street + " " + response[i].city + " " + response[i].state + " " + response[i].postal_code);
             var brewPhone = $("<p>").attr("id", "phoneEl").html("(" + response[i].phone.substring(0, 3) + ") " + response[i].phone.substring(3, 6) + "-" + response[i].phone.substring(6, 10));
-            var brewUrl = $("<a>").attr("href", response[i].website_url).attr("id", "webEl").html(response[i].website_url);
+            var brewUrl = $("<a>").attr("href", response[i].website_url).attr("id", "webEl").html(response[i].website_url)
+            var footer = $("<div>").attr("class", "uk-card-footer"); //card footer
             //adding select button and attaching response data to data-set attribute
             var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("id", "favoritesBtn").attr("class", "selectBtn").text("Favorite"); //.attr("data-set", response[i]); 
 
@@ -33,15 +35,20 @@ function breweryInfo(searchZip) {
             brewChoice.attr("data-info", JSON.stringify(response[i])); //adding complete data object to call on click
             // linkPreview(response[i].website_url);
 
-            newCard.append(brewName);
+     
+            newCard.append(header); 
+            header.append(brewName);
+            newCard.append(brewInfo);
             newCard.append(brewType);
             newCard.append(brewAddress);
             newCard.append(brewPhone);
             newCard.append(brewUrl);
-            newCard.append(brewChoice);
+            newCard.append(footer); 
+            footer.append(brewChoice);
             // newCard.append(imageEl);
 
-            $("body").append(newCard);
+            $("#mainContainer").append(newCard); //appending New Cards to main
+          
 
         }
     });
@@ -87,13 +94,16 @@ $("#searchBtn").click(function (event) {  //Added button ID
 
 
 // click-handler for selecting brewery & saving to local storage 
-$(".selectBtn").click(function (event) {
+
+$(".selectBtn").click(function (event) {  
+
     event.preventDefault();
     console.log("hello");
+  
     //capturing brew name from data attribute; storing name in array
     var saveName = $(this).attr("data-name");
     saveList.push(saveName);
-
+    
     // save in localStorage under key "index"
     localStorage.setItem("index", saveName);
 
@@ -101,19 +111,21 @@ $(".selectBtn").click(function (event) {
 
 
 
-// // load local storage data when Favorites button is clicked
-// $(".selectBtn").click(function (event, saveList) {  //need Favorites button
-//     event.preventDefault();
 
-//     for (var i = 0; i < saveList.length; i++) {  
+// load local storage data when Favorites button is clicked
+$("#favoritesBtn").click(function (event, saveList) {  //need Favorites button
+    event.preventDefault();
 
-//         var addFavorite= $([i]).val(localStorage.getItem([i]));
+    for (var i = 0; i < saveList.length; i++) {  
+      
+        var addFavorite= $([i]).val(localStorage.getItem([i]));
 
-//         var favList = $("<div>").attr("class", "uk-card-body");
-//         favList.append(addFavorite);
-//         $("#favorites").append.favList; //appending to Favorites div
+        var favList = $("<div>").attr("class", "uk-card-body");
+        favList.append(addFavorite)
+        $("#favorites").append.favList //appending to Favorites div
+    
+    };
 
-//     };
+}); //end Favorites button function
 
-// }); //end Favorites button function
 
