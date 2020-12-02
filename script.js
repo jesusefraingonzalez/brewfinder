@@ -118,7 +118,7 @@ $("#searchBtn").click(function (event) {
         searchZip = $("input").val().trim(); //reads the input from the user
         breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
 
-    }); //end search button click handler function
+}); //end search button click handler function
 
 
 
