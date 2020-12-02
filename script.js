@@ -81,11 +81,7 @@ $(document).ready(function () {
         event.preventDefault();
 
         //emptying html elements from previous search
-        $("#brewNameEl").empty();
-        $("#brewType").empty();
-        $("#addressEl").empty();
-        $("#phoneEl").empty();
-        $("#webEl").empty();
+        $("#mainContainer").empty();
 
         searchZip = $("input").val().trim(); //reads the input from the user
         breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
