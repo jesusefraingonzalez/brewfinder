@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/css/uikit.min.css" />
+    <!--Google Font Link-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Work+Sans&display=swap" rel="stylesheet">    <link rel="stylesheet" href="style.css">    
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.10/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.10/dist/js/uikit-icons.min.js"></script>    
@@ -32,9 +35,9 @@ User selects brewery and receives message "Have fun & Stay Safe!"
 close or return option
 -->
 
-    <div class="uk-container .uk-align-center">
+    <div class="uk-container full-body">
         <header>
-            <h1 class="h1">Brews & Bucks</h1>
+            <h1 class="h1">BREWFINDER</h1>
         </header>
     </div>
 
@@ -45,7 +48,7 @@ close or return option
             <span uk-search-icon></span>
             <input class="uk-search-input" type="input" placeholder="Search...">
         </form>
-        <button class="uk-button uk-button-default" id="searchBtn" value="search">Search</button>
+        <button class="uk-button uk-button-default search-btn" id="searchBtn" value="search">Search</button>
     </div>
 
 
@@ -80,7 +83,7 @@ close or return option
             </div>-->
         </div>
     </div>
-    <br>-->
+    <br>
 
     <div class="uk-container" id ="mainContainer">
         <div class="uk-card uk-margin uk-card-default uk-width-1-2@m">
