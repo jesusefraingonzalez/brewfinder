@@ -5,10 +5,6 @@ var searchZip;
 var selectBrewery;
 
 var saveList = []; //empty array for list of previously chosen breweries
-<<<<<<< HEAD
-
-=======
->>>>>>> 3e6cea9796360dac393abf65a5a9659d1860222e
 
 
 
@@ -31,10 +27,6 @@ function breweryInfo(searchZip) {
             var brewPhone = $("<p>").attr("id", "phoneEl").html("(" + response[i].phone.substring(0, 3) + ") " + response[i].phone.substring(3, 6) + "-" + response[i].phone.substring(6, 10));
             var brewUrl = $("<a>").attr("href", response[i].website_url).attr("id", "webEl").html(response[i].website_url)
             var footer = $("<div>").attr("class", "uk-card-footer"); //card footer
-<<<<<<< HEAD
-            var brewChoice = $("<a href>").attr("class", "uk-button uk-button-text").attr("class", "selectBtn").text("Select"); //.attr("data-set", response[i]); 
-            linkPreview(response[i].website_url);
-=======
             //adding select button and attaching response data to data-set attribute
             var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn").text("Favorite"); //.attr("data-set", response[i]); 
 
@@ -42,7 +34,6 @@ function breweryInfo(searchZip) {
             brewChoice.attr("data-name", response[i].name); //adding brew name data attribute to store on click
             brewChoice.attr("data-info", JSON.stringify(response[i])); //adding complete data object to call on click
             // linkPreview(response[i].website_url);
->>>>>>> 3e6cea9796360dac393abf65a5a9659d1860222e
 
 
             newCard.append(header);
@@ -58,9 +49,6 @@ function breweryInfo(searchZip) {
 
             $("#mainContainer").append(newCard); //appending New Cards to main
 
-<<<<<<< HEAD
-        };
-=======
 
         }
         $(".selectBtn").click(function (event) {
@@ -77,7 +65,6 @@ function breweryInfo(searchZip) {
             localStorage.setItem("index", saveName);
         
         }); //end select button click handler function
->>>>>>> 3e6cea9796360dac393abf65a5a9659d1860222e
     });
     
 };
@@ -95,13 +82,8 @@ function linkPreview(barLink) {
         method: "GET"
     }).then(function (response) {
         console.log(response);
-<<<<<<< HEAD
-        var image = $("<img>").attr("src", response.image);
-        $("mainContainer").prepend(image);
-=======
         return $("<img>").attr("src", response.image);
         // $("body").append(image);
->>>>>>> 3e6cea9796360dac393abf65a5a9659d1860222e
     });
 }
 
@@ -110,37 +92,18 @@ function linkPreview(barLink) {
 
 //EVENTS
 
-// click-handler for getting the desired zip code
-$(document).ready(function () {
+// click-handler for initiating search and clearing the main container from previous searches
+$("#searchBtn").click(function (event) {
 
-<<<<<<< HEAD
-    $("#searchBtn").click(function (event) {  //Added button ID
-        event.preventDefault();
-=======
     //emptying html elements from previous search
     $("#mainContainer").empty();
->>>>>>> 3e6cea9796360dac393abf65a5a9659d1860222e
-
-        //emptying html elements from previous search
-        $("#mainContainer").empty();
 
         searchZip = $("input").val().trim(); //reads the input from the user
         breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
 
     }); //end search button click handler function
 
-}); //end document ready function
 
-<<<<<<< HEAD
-// click-handler for selecting brewery & saving to local storage  STILL WORKING ON THIS
-$(".selectBtn").click(function (event) {
-    event.preventDefault();
-=======
-// click-handler for selecting brewery & saving to local storage 
-
-
-
->>>>>>> 3e6cea9796360dac393abf65a5a9659d1860222e
 
 
 
@@ -156,16 +119,10 @@ $("#favoritesBtn").click(function (event, saveList) {  //need Favorites button
         favList.append(addFavorite)
         $("#favorites").append.favList //appending to Favorites div
 
-<<<<<<< HEAD
-    // save in localStorage
-    localStorage.setItem(number, name);
-
-=======
     };
->>>>>>> 3e6cea9796360dac393abf65a5a9659d1860222e
 
 }); //end Favorites button function
 
 
 // linkPreview("google.com");
-breweryInfo("43202");
+//breweryInfo("43202");
