@@ -105,7 +105,7 @@ function breweryInfo(searchZip) {
             saveList.push(saveName);  //This IS working correctly
                 console.log(saveList);
         
-            // save in localStorage under key "index"
+            // save in localStorage
             localStorage.setItem(count, saveName); //NOT WORKING correctly. Replaces the value at count every time. So count is always 1
         
         }); //end select button click handler function
