@@ -29,7 +29,7 @@ function breweryInfo(searchZip) {
             var brewUrl = $("<a>").attr("href", response[i].website_url).attr("id", "webEl").html(response[i].website_url)
             var footer = $("<div>").attr("class", "uk-card-footer"); //card footer
             //adding select button and attaching response data to data-set attribute
-            var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn").text("Favorite"); //.attr("data-set", response[i]); 
+            var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn").text("Add to Favorites"); //.attr("data-set", response[i]); 
 
             //var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn"); 
             brewChoice.attr("data-name", response[i].name); //adding brew name data attribute to store on click
@@ -53,7 +53,7 @@ function breweryInfo(searchZip) {
            
            // If/Else to call Link Preview for those breweries with websites; placeholder image for those without urls
 
-            if (response[i].website_url === "") { // the "" is from the opencrewery data object
+            if (response[i].website_url === "") { // the "" is from the openbrewery data object
                
                 var noURL = $("<img>").attr("src", "https://cdn5.vectorstock.com/i/1000x1000/87/84/banner-with-picture-of-the-brewery-vector-1948784.jpg").width("150px").height("150px"); 
                 footer.append(noURL)
