@@ -25,10 +25,14 @@ function breweryInfo(searchZip) {
             var brewType = $("<p>").attr("id", "brewType").html(response[i].brewery_type);
             var brewAddress = $("<p>").attr("id", "addressEl").html(response[i].street + " " + response[i].city + " " + response[i].state + " " + response[i].postal_code + "</p>");
             var brewPhone = $("<p>").attr("id", "phoneEl").html("(" + response[i].phone.substring(0, 3) + ") " + response[i].phone.substring(3, 6) + "-" + response[i].phone.substring(6, 10));
-            var brewUrl = $("<a>").attr("href", response[i].website_url).attr("id", "webEl").html(response[i].website_url);
-            //adding select button and attaching response data to data-set attribute
+            var brewUrl = $("<a>").attr("href", response[i].website_url).attr("id", "webEl").html(response[i].website_url)
             var footer = $("<div>").attr("class", "uk-card-footer"); //card footer
-            var brewChoice = $("<a href>").attr("class", "uk-button uk-button-text").attr("class", "selectBtn").text("Select"); //.attr("data-set", response[i]); 
+            //adding select button and attaching response data to data-set attribute
+            var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("id", "favoritesBtn").attr("class", "selectBtn").text("Favorite"); //.attr("data-set", response[i]); 
+
+            //var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn"); 
+            brewChoice.attr("data-name", response[i].name); //adding brew name data attribute to store on click
+            brewChoice.attr("data-info", JSON.stringify(response[i])); //adding complete data object to call on click
            // linkPreview(response[i].website_url);
 
            
