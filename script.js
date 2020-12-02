@@ -6,7 +6,6 @@ var selectBrewery;
 
 var saveList = []; //empty array for list of previously chosen breweries
 
-
 //FUNCTIONS
 
 function breweryInfo(searchZip) {
@@ -54,7 +53,7 @@ function breweryInfo(searchZip) {
 
             if (response[i].website_url === "") { // the "" is from the openbrewery data object
                
-                var noURL = $("<img>").attr("src", "https://cdn5.vectorstock.com/i/1000x1000/87/84/banner-with-picture-of-the-brewery-vector-1948784.jpg").width("150px").height("150px"); 
+                var noURL = $("<img>").attr("src", "/Users/taylorceneviva/project-one/images/drunkweb.png").width("150px").height("150px"); 
                 footer.append(noURL)
 
             } else {
