@@ -4,7 +4,7 @@ var searchZip;
 
 var selectBrewery;
 
-var saveList= []; //empty array for list of previously chosen breweries
+var saveList = []; //empty array for list of previously chosen breweries
 
 
 
@@ -17,7 +17,7 @@ function breweryInfo(searchZip) {
         method: "GET"
     }).then(function (response) {
         // console.log(response);  
-        for (var i = 0; i < response.length; i++) {  
+        for (var i = 0; i < response.length; i++) {
             //create data for brewery cards
             var newCard = $("<div>").attr("class", "uk-card uk-card-default uk-width-1-2@m"); //card container
             var header = $("<div>").attr("class", "uk-card-header"); //card header
@@ -30,30 +30,33 @@ function breweryInfo(searchZip) {
             //adding select button and attaching response data to data-set attribute
             var footer = $("<div>").attr("class", "uk-card-footer"); //card footer
             var brewChoice = $("<a href>").attr("class", "uk-button uk-button-text").attr("class", "selectBtn").text("Select"); //.attr("data-set", response[i]); 
-           // linkPreview(response[i].website_url);
+            linkPreview(response[i].website_url);
 
-           
-            newCard.append(header); 
+
+            newCard.append(header);
             header.append(brewName);
             newCard.append(brewInfo);
             newCard.append(brewType);
             newCard.append(brewAddress);
             newCard.append(brewPhone);
             newCard.append(brewUrl);
-            newCard.append(footer); 
+            newCard.append(footer);
             footer.append(brewChoice);
             // newCard.append(imageEl);
 
             $("#mainContainer").append(newCard); //appending New Cards to main
-        }
+
+        };
     });
-}
+    
+};
 
 //appends website image given url using link preview api
 function linkPreview(barLink) {
     // link-preview api key and query
     var linkApiKey = "add99689022bb0b11c5fd0a126838bc8";
     var linkQuery = "http://api.linkpreview.net/?key=" + linkApiKey + "&q=" + barLink;
+    console.log(linkQuery);
 
     // ajax query to get the link-preview image from the website
     $.ajax({
@@ -62,17 +65,20 @@ function linkPreview(barLink) {
     }).then(function (response) {
         console.log(response);
         var image = $("<img>").attr("src", response.image);
-        $("body").append(image);
+        $("mainContainer").prepend(image);
     });
 }
+
 
 
 
 //EVENTS
 
 // click-handler for getting the desired zip code
-$("#searchBtn").click(function (event) {  //Added button ID
-    event.preventDefault();
+$(document).ready(function () {
+
+    $("#searchBtn").click(function (event) {  //Added button ID
+        event.preventDefault();
 
         //emptying html elements from previous search
         $("#brewNameEl").empty();
@@ -81,15 +87,15 @@ $("#searchBtn").click(function (event) {  //Added button ID
         $("#phoneEl").empty();
         $("#webEl").empty();
 
-    searchZip = $("input").val().trim(); //reads the input from the user
-    breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
+        searchZip = $("input").val().trim(); //reads the input from the user
+        breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
 
-}); //end search button click handler function
+    }); //end search button click handler function
 
-
+}); //end document ready function
 
 // click-handler for selecting brewery & saving to local storage  STILL WORKING ON THIS
-$(".selectBtn").click(function (event) {  
+$(".selectBtn").click(function (event) {
     event.preventDefault();
 
     brewChoice;
@@ -102,7 +108,7 @@ $(".selectBtn").click(function (event) {
 
     // save in localStorage
     localStorage.setItem(number, name);
-   
+
 
 }); //end select button click handler function
 
