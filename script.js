@@ -4,7 +4,7 @@ var searchZip;
 
 var selectBrewery;
 
-
+var saveList = []; //empty array for list of previously chosen breweries
 
 
 //FUNCTIONS
@@ -83,21 +83,30 @@ function breweryInfo(searchZip) {
 
 
         }; //end loop
+        
 
+        // Adding items to favorite's with click event
+       
         $(".selectBtn").click(function (event) {
 
             event.preventDefault();
             // console.log("hello");
 
-            var saveList = []; //empty array for list of previously chosen breweries
-        
+            var count = localStorage.getItem(count);// NOT WORKING. need count function to count every time select button clicked. that sets the index position on the favorites list
+                //  if (count === null) {
+                //     count = 1;
+                // } else {
+                //     count++;
+                //  };
+
             //capturing brew name from data attribute; storing name in array
-            var saveName = $(this).attr("data-name");
-            saveList.push(saveName);  //NOT WORKING RIGHT - this just replaces the contents instead of adding to the array, so only 1 item in local storage
-          //  console.log(saveList);
+            var saveName = $(this).attr("data-name"); //This IS working correctly
+                console.log(saveName);
+            saveList.push(saveName);  //This IS working correctly
+                console.log(saveList);
         
             // save in localStorage under key "index"
-            localStorage.setItem("index", saveName);
+            localStorage.setItem(count, saveName); //NOT WORKING correctly. Replaces the value at count every time. So count is always 1
         
         }); //end select button click handler function
     });
@@ -129,7 +138,7 @@ $("#searchBtn").click(function (event) {
 $("#favoritesBtn").click(function (event, saveList) {  //need Favorites button
     event.preventDefault();
     console.log("hello");
-    for (var i = 0; (i < saveList.length); i++) {
+    for (var i = 0; (i < saveList.length); i++) {  //NOT sure that saveList is passing into this function
 
         var addFavorite = $([i]).val(localStorage.getItem([i]));
 
