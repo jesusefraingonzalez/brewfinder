@@ -44,6 +44,10 @@ close or return option
 
 
     <div class="uk-container">
+        <div class="instructions"> 
+            <p> Enter your zipcode to find local Breweries! </p>
+        </div>
+        
         <form class="uk-search uk-search-default" id="search-module">
             <span uk-search-icon></span>
             <input class="uk-search-input" type="input" placeholder="Search...">
@@ -51,11 +55,9 @@ close or return option
         <button class="uk-button uk-button-default search-btn" id="searchBtn" value="search">Search</button>
         
         
-        <button class="uk-button uk-button-default uk-align-right" id ="favoritesBtn">Favorite Breweries</button>
+        <button class="uk-button uk-button-default uk-align-right fav-btn" id ="favoritesBtn">Favorite Breweries</button>
             <div class="uk-container uk-align-right" id="favorites"></div> <!--nested container to append favorites to-->
     </div>
-
-    <!-- Card Option one.. 3 separate sections (ex. brewery name, info, select brewery button-->
     <br>
 
 
@@ -78,15 +80,7 @@ close or return option
                 <p id="addressEl">Address:</p>
                 <p id="phoneEl">Phone Number: </p>
                 <p id="webEl">Website: </p>
-            </div>
-
-
-            <div class="uk-card-footer">
-                <a href="#" class="uk-button uk-button-text">select</a>
             </div>-->
-        </div>
-    </div>
-    <br>
 
     <div class="uk-container" id ="mainContainer">
         <div class="uk-card uk-margin uk-card-default uk-width-1-2@m">
@@ -97,8 +91,15 @@ close or return option
                     </div>
                 </div>
             </div>
-
         </div>
+    </div>
+
+    <div class="div-footer">
+        <footer>
+            <div>
+                <p class="footer-text">Built by: Efraín González, Taylor Ceneviva & Laura Parker</p>
+            </div>
+        </footer>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
