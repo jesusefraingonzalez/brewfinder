@@ -22,9 +22,10 @@ function breweryInfo(searchZip) {
             var header = $("<div>").attr("class", "uk-card-header"); //card header
             var brewName = $("<h3>").attr("id", "brewNameEL").attr("class", "uk-card-title uk-margin-remove-bottom").html(response[i].name);
             var brewInfo = $("<div>").attr("uk-card-body"); //card body
-            var brewType = $("<p>").attr("id", "brewType").html(response[i].brewery_type);
-            var brewAddress = $("<p>").attr("id", "addressEl").html(response[i].street + " " + response[i].city + " " + response[i].state + " " + response[i].postal_code);
-            var brewPhone = $("<p>").attr("id", "phoneEl").html("(" + response[i].phone.substring(0, 3) + ") " + response[i].phone.substring(3, 6) + "-" + response[i].phone.substring(6, 10));
+            var brewType = $("<p>" + "<strong>Type: </strong>" + response[i].brewery_type + "</p>").attr("id", "brewType"); 
+            var brewAddress = $("<p>" + "<strong>Address: </strong>" + response[i].street + "</p>").attr("id", "addressEl");
+            var brewCity = $("<p>" + "<strong>City: </strong>" + response[i].city + ", " + response[i].state + " " + response[i].postal_code + "</p>").attr("id", "cityEl"); 
+            var brewPhone = $("<p>" + "<strong>Phone: </strong>" + ("(" + response[i].phone.substring(0, 3) + ") " + response[i].phone.substring(3, 6) + "-" + response[i].phone.substring(6, 10)) +"</p>").attr("id", "phoneEl");
             var brewUrl = $("<a>").attr("href", response[i].website_url).attr("id", "webEl").html(response[i].website_url)
             var footer = $("<div>").attr("class", "uk-card-footer"); //card footer
             //adding select button and attaching response data to data-set attribute
@@ -40,7 +41,9 @@ function breweryInfo(searchZip) {
             header.append(brewName);
             newCard.append(brewInfo);
             newCard.append(brewType);
+     //           brewType.prepend("<p>" + "Type: " + "</p>");
             newCard.append(brewAddress);
+            newCard.append(brewCity);
             newCard.append(brewPhone);
             newCard.append(brewUrl);
             newCard.append(footer);
