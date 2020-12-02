@@ -34,26 +34,59 @@ function breweryInfo(searchZip) {
             //var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn"); 
             brewChoice.attr("data-name", response[i].name); //adding brew name data attribute to store on click
             brewChoice.attr("data-info", JSON.stringify(response[i])); //adding complete data object to call on click
-            // linkPreview(response[i].website_url);
 
 
             newCard.append(header);
             header.append(brewName);
             newCard.append(brewInfo);
             newCard.append(brewType);
-     //           brewType.prepend("<p>" + "Type: " + "</p>");
             newCard.append(brewAddress);
             newCard.append(brewCity);
             newCard.append(brewPhone);
             newCard.append(brewUrl);
             newCard.append(footer);
             footer.append(brewChoice);
-            // newCard.append(imageEl);
+         //   newCard.append(imageEl);
 
             $("#mainContainer").append(newCard); //appending New Cards to main
 
+           
+           // If/Else to call Link Preview for those breweries with websites; placeholder image for those without urls
 
-        }
+            if (response[i].website_url === "") { // the "" is from the opencrewery data object
+               
+                var noURL = $("<img>").attr("src", "https://cdn5.vectorstock.com/i/1000x1000/87/84/banner-with-picture-of-the-brewery-vector-1948784.jpg").width("150px").height("150px"); 
+                footer.append(noURL)
+
+            } else {
+                linkPreview(response[i].website_url); //calls linkPreview function
+            };
+
+                            //appends website image given url using link preview api
+                            function linkPreview(barLink) {
+                                // link-preview api key and query
+                                var linkApiKey = "add99689022bb0b11c5fd0a126838bc8";
+                                var linkQuery = "http://api.linkpreview.net/?key=" + linkApiKey + "&q=" + barLink;
+                                console.log(linkQuery);
+
+                                // ajax query to get the link-preview image from the website
+                                $.ajax({
+                                    url: linkQuery,
+                                    method: "GET"
+                                }).then(function (response) {
+                                    console.log(response);
+                                    //return $("<img>").attr("src", response.image);
+                                  //  $("body").append(image);
+
+                                    var imageEl = $("<img>").attr("src", response.image).width("150px").height("150px"); 
+                            
+                                    footer.append(imageEl);
+                                });
+                            }
+
+
+        } //end loop
+
         $(".selectBtn").click(function (event) {
 
             event.preventDefault();
@@ -72,23 +105,6 @@ function breweryInfo(searchZip) {
     
 };
 
-//appends website image given url using link preview api
-function linkPreview(barLink) {
-    // link-preview api key and query
-    var linkApiKey = "add99689022bb0b11c5fd0a126838bc8";
-    var linkQuery = "http://api.linkpreview.net/?key=" + linkApiKey + "&q=" + barLink;
-    console.log(linkQuery);
-
-    // ajax query to get the link-preview image from the website
-    $.ajax({
-        url: linkQuery,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response);
-        return $("<img>").attr("src", response.image);
-        // $("body").append(image);
-    });
-}
 
 
 
@@ -126,6 +142,3 @@ $("#favoritesBtn").click(function (event, saveList) {  //need Favorites button
 
 }); //end Favorites button function
 
-
-// linkPreview("google.com");
-//breweryInfo("43202");
