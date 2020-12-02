@@ -89,22 +89,35 @@ $("#searchBtn").click(function (event) {  //Added button ID
 
 
 
-// click-handler for selecting brewery & saving to local storage  STILL WORKING ON THIS
+// click-handler for selecting brewery & saving to local storage 
 $(".selectBtn").click(function (event) {  
     event.preventDefault();
 
-    brewChoice;
-
-    selectBrewery; //this needs to be a data object/card of previously selected?
-    saveList; //needs to push data object to the empty array?
-
-    var name = $(this).siblings("#brewNameEl").val();
-    var number = $(this).parent().attr("id");
-
-    // save in localStorage
-    localStorage.setItem(number, name);
-   
+    //capturing brew name from data attribute; storing name in array
+    var saveName = $(this).attr("data-name");
+    saveList.push(saveName);
+    
+    // save in localStorage under key "index"
+    localStorage.setItem("index", saveName);
 
 }); //end select button click handler function
+
+
+
+// load local storage data when Favorites button is clicked
+$("#favoritesBtn").click(function (event, saveList) {  //need Favorites button
+    event.preventDefault();
+
+    for (var i = 0; i < saveList.length; i++) {  
+      
+        var addFavorite= $([i]).val(localStorage.getItem([i]));
+
+        var favList = $("<div>").attr("class", "uk-card-body");
+        favList.append(addFavorite)
+        $("#favorites").append.favList //appending to Favorites div
+    
+    };
+
+}); //end Favorites button function
 
 
