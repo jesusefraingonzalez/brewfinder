@@ -4,7 +4,6 @@ var searchZip;
 
 var selectBrewery;
 
-var saveList = []; //empty array for list of previously chosen breweries
 
 
 
@@ -89,11 +88,13 @@ function breweryInfo(searchZip) {
 
             event.preventDefault();
             // console.log("hello");
+
+            var saveList = []; //empty array for list of previously chosen breweries
         
             //capturing brew name from data attribute; storing name in array
             var saveName = $(this).attr("data-name");
-            // console.log($(this));
-            saveList.push(saveName);
+            saveList.push(saveName);  //NOT WORKING RIGHT - this just replaces the contents instead of adding to the array, so only 1 item in local storage
+          //  console.log(saveList);
         
             // save in localStorage under key "index"
             localStorage.setItem("index", saveName);
@@ -128,12 +129,13 @@ $("#searchBtn").click(function (event) {
 $("#favoritesBtn").click(function (event, saveList) {  //need Favorites button
     event.preventDefault();
     console.log("hello");
-    for (var i = 0; i < saveList.length; i++) {
+    for (var i = 0; (i < saveList.length); i++) {
 
         var addFavorite = $([i]).val(localStorage.getItem([i]));
 
         var favList = $("<div>").attr("class", "uk-card-body");
         favList.append(addFavorite)
+
         $("#favorites").append.favList //appending to Favorites div
 
     };
