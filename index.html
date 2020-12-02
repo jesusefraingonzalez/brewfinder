@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/css/uikit.min.css" />
+    <!--Google Font Link-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Work+Sans&display=swap" rel="stylesheet">    <link rel="stylesheet" href="style.css">    
     <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit-icons.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.10/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.10/dist/js/uikit-icons.min.js"></script>    
     <link rel="stylesheet" href="style.css">
     <title>Brews & Bucks</title>
 </head>
@@ -32,9 +35,9 @@ User selects brewery and receives message "Have fun & Stay Safe!"
 close or return option
 -->
 
-    <div class="uk-container .uk-align-center">
+    <div class="uk-container full-body">
         <header>
-            <h1 class="h1">Brews & Bucks</h1>
+            <h1 class="h1">BREWFINDER</h1>
         </header>
     </div>
 
@@ -45,27 +48,29 @@ close or return option
             <span uk-search-icon></span>
             <input class="uk-search-input" type="input" placeholder="Search...">
         </form>
-        <button class="uk-button uk-button-default" id="searchBtn" value="search">Search</button>
+        <button class="uk-button uk-button-default search-btn" id="searchBtn" value="search">Search</button>
     </div>
 
 
     <!-- Card Option one.. 3 separate sections (ex. brewery name, info, select brewery button-->
     <br>
 
-    <div class="uk-container">
+
+   <!-- <div class="uk-container">
         <div class="uk-card uk-card-default uk-width-1-2@m">
+
             <div class="uk-card-header">
                 <div class="uk-grid-small uk-flex-middle" uk-grid>
                     <div class="uk-width-expand">
                         <h3 class="uk-card-title uk-margin-remove-bottom"></h3>
                         <p class="uk-text-meta uk-margin-remove-top" id="brewNameEl">
-                            <!--<time datetime="2016-04-01T19:00">April 01, 2016</time>-->
+                            <time datetime="2016-04-01T19:00">April 01, 2016</time>
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="uk-card-body">
+           <div class="uk-card-body">
                 <p id="brewType"> Brewery Type: </p>
                 <p id="addressEl">Address:</p>
                 <p id="phoneEl">Phone Number: </p>
@@ -75,29 +80,22 @@ close or return option
 
             <div class="uk-card-footer">
                 <a href="#" class="uk-button uk-button-text">select</a>
-            </div>
+            </div>-->
         </div>
     </div>
     <br>
 
-    <!-- card option 2 -->
-    <div class="uk-container">
-        <div class="uk-card uk-card-default uk-width-1-2@m">
+    <div class="uk-container" id ="mainContainer">
+        <div class="uk-card uk-margin uk-card-default uk-width-1-2@m">
             <div class="uk-card-header">
                 <div class="uk-grid-small uk-flex-middle" uk-grid>
-                    <div class="uk-width-expand">
-                        <h3 class="uk-card-title uk-margin-remove-bottom">Name of brewery here</h3>
-                        <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01,
-                                2016</time></p>
+                    <div class="uk-column-1-2 uk-column-divider">
+                        <h3 class="uk-card-title uk-margin-remove-bottom">Favorites</h3>
+                        <div class="uk-container" id="favorites"></div>
                     </div>
                 </div>
             </div>
-            <div class="uk-card-body">
-                <p> Brewery info: ....... </p>
-            </div>
-            <div class="uk-card-footer">
-                <a href="#" class="uk-button uk-button-text">select</a>
-            </div>
+
         </div>
     </div>
 
