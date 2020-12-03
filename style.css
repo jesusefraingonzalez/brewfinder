@@ -64,16 +64,18 @@ padding-bottom: 20px;
 .em{
     margin-left: 10px;
 }
-
+/* paragraph/link style in card */
 a,
 p{
     margin-left: 40px;
 }
 
+/* search bar */
 .shift{
     margin-left: 40px;
 }
 
+/* select button color */
 .selectBtn{
     border-color: #2a3842;
 }

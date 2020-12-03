@@ -31,7 +31,10 @@ function createCard(card) {
     var header = $("<div>").attr("class", "uk-card-header"); //card header
     var brewName = $("<h3>").attr("id", "brewNameEL").attr("class", "uk-card-title uk-margin-remove-bottom").html(card.name);
     var brewInfo = $("<div>").attr("uk-card-body"); //card body
-    var brewImage = $("<img>").attr("src", "images/drunkweb.png").width("150px").height("150px");
+
+    //var brewImage = $("<img>").attr("src", "images/drunkweb.png").width("150px").height("150px");
+
+
     var brewType = $("<p>" + "<strong>Type: </strong>" + card.brewery_type + "</p>").attr("id", "brewType");
     var brewAddress = $("<p>" + "<strong>Address: </strong>" + card.street + "</p>").attr("id", "addressEl");
     var brewCity = $("<p>" + "<strong>City: </strong>" + card.city + ", " + card.state + " " + card.postal_code + "</p>").attr("id", "cityEl");
@@ -49,7 +52,9 @@ function createCard(card) {
     newCard.append(brewPhone);
     newCard.append(brewUrl);
     newCard.append("<br>");
-    newCard.append(brewImage);
+
+    //newCard.append(brewImage);
+
     newCard.append(footer);
     newCard.css("margin", "20px");
     return newCard;
@@ -78,9 +83,11 @@ function breweryInfo(searchZip) {
 
             // If/Else to call Link Preview for those breweries with websites; placeholder image for those without urls
             if (response[i].website_url === "") { // the "" is from the openbrewery data object
-                // var noURL = $("<img>").attr("src", "/images/drunkweb.png").width("150px").height("150px");
-                // newCard.append(noURL);
-                // noURL.insertAfter($(".uk-card-header"));
+
+                var noURL = $("<img>").attr("src", "/images/drunkweb.png").width("150px").height("150px");
+                newCard.append(noURL);
+
+
             } else {
                 linkPreview(response[i].website_url, footer); //calls linkPreview function
             };
