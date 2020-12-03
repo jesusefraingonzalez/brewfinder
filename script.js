@@ -44,7 +44,7 @@ function breweryInfo(searchZip) {
             newCard.append(brewUrl);
             newCard.append(footer);
             footer.append(brewChoice);
-         //   image appends in if/else statement
+     
 
             $("#mainContainer").append(newCard); //appending New Cards to main
 
@@ -54,7 +54,7 @@ function breweryInfo(searchZip) {
             if (response[i].website_url === "") { // the "" is from the openbrewery data object
                
                 var noURL = $("<img>").attr("src", "/Users/taylorceneviva/project-one/images/drunkweb.png").width("150px").height("150px"); 
-                footer.append(noURL)
+                footer.append(noURL);
 
             } else {
                 linkPreview(response[i].website_url); //calls linkPreview function
@@ -75,8 +75,7 @@ function breweryInfo(searchZip) {
                                     console.log(response);
 
                                     var imageEl = $("<img>").attr("src", response.image).width("150px").height("150px"); 
-                            
-                                    footer.append(imageEl);
+                                    newCard.append(imageEl);
                                 });
                             };
 
