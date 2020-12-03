@@ -143,13 +143,15 @@ $("#searchBtn").click(function (event) {
 $("#favoritesBtn").click(function (event) {  //need Favorites button
     event.preventDefault();
     $("#mainContainer").empty();
-
+    $("#mainContainer").append('<h2 style="color: #f1e3bb">Favorites</h2>');
     // loops through all local storage keys and creates card for each favorite brewery
     for (var i = 0; i < localStorage.length; i++) {
         var favObject = JSON.parse(localStorage.getItem(localStorage.key(i)));
         var newCard = createCard(favObject);
 
+       
         $("#mainContainer").append(newCard);
+        
       
     }
 
