@@ -51,7 +51,7 @@ function createCard(card) {
     newCard.append("<br>");
     newCard.append(brewImage);
     newCard.append(footer);
-
+    newCard.css("margin", "20px");
     return newCard;
 }
 
