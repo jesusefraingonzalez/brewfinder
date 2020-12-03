@@ -19,12 +19,12 @@ function createCard(card) {
     var brewPhone = $("<p>" + "<strong>Phone: </strong>" + ("(" + card.phone.substring(0, 3) + ") " + card.phone.substring(3, 6) + "-" + card.phone.substring(6, 10)) + "</p>").attr("id", "phoneEl");
     var brewUrl = $("<a>").attr("href", card.website_url).attr("id", "webEl").html(card.website_url)
     var footer = $("<div>").attr("class", "uk-card-footer"); //card footer
-    //adding select button and attaching response data to data-set attribute
-    var brewChoice = $("<button>").attr("class", "uk-button uk-button-default selectBtn").text("Add to Favorites"); //.attr("data-set", response[i]); 
+    // //adding select button and attaching response data to data-set attribute
+    // var brewChoice = $("<button>").attr("class", "uk-button uk-button-default selectBtn").text("Add to Favorites"); //.attr("data-set", response[i]); 
 
-    //var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn"); 
-    brewChoice.attr("data-name", card.name); //adding brew name data attribute to store on click
-    brewChoice.attr("data-info", JSON.stringify(card)); //adding complete data object to call on click
+    // //var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn"); 
+    // brewChoice.attr("data-name", card.name); //adding brew name data attribute to store on click
+    // brewChoice.attr("data-info", JSON.stringify(card)); //adding complete data object to call on click
 
 
     newCard.append(header);
@@ -36,10 +36,11 @@ function createCard(card) {
     newCard.append(brewPhone);
     newCard.append(brewUrl);
     newCard.append(footer);
-    footer.append(brewChoice);
+    // footer.append(brewChoice);
 
+    $("#mainContainer").append(newCard);
 
-    $("#mainContainer").append(newCard); //appending New Cards to main
+    return newCard;
 }
 
 function breweryInfo(searchZip) {
@@ -50,37 +51,20 @@ function breweryInfo(searchZip) {
         // console.log(response);  
         for (var i = 0; i < response.length; i++) {
             //create data for brewery cards
-            var newCard = $("<div>").attr("class", "uk-card uk-card-default uk-width-1-2@m"); //card container
-            var header = $("<div>").attr("class", "uk-card-header"); //card header
-            var brewName = $("<h3>").attr("id", "brewNameEL").attr("class", "uk-card-title uk-margin-remove-bottom").html(response[i].name);
-            var brewInfo = $("<div>").attr("uk-card-body"); //card body
-            var brewType = $("<p>" + "<strong>Type: </strong>" + response[i].brewery_type + "</p>").attr("id", "brewType");
-            var brewAddress = $("<p>" + "<strong>Address: </strong>" + response[i].street + "</p>").attr("id", "addressEl");
-            var brewCity = $("<p>" + "<strong>City: </strong>" + response[i].city + ", " + response[i].state + " " + response[i].postal_code + "</p>").attr("id", "cityEl");
-            var brewPhone = $("<p>" + "<strong>Phone: </strong>" + ("(" + response[i].phone.substring(0, 3) + ") " + response[i].phone.substring(3, 6) + "-" + response[i].phone.substring(6, 10)) + "</p>").attr("id", "phoneEl");
-            var brewUrl = $("<a>").attr("href", response[i].website_url).attr("id", "webEl").html(response[i].website_url)
+            var newCard = createCard(response[i]);
+            console.log(newCard);
             var footer = $("<div>").attr("class", "uk-card-footer"); //card footer
-            //adding select button and attaching response data to data-set attribute
-            var brewChoice = $("<button>").attr("class", "uk-button uk-button-default selectBtn").text("Add to Favorites"); //.attr("data-set", response[i]); 
 
-            //var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn"); 
+            // //adding select button and attaching response data to data-set attribute
+            var brewChoice = $("<button>").attr("class", "uk-button uk-button-default selectBtn").text("Add to Favorites"); //.attr("data-set", response[i]); 
             brewChoice.attr("data-name", response[i].name); //adding brew name data attribute to store on click
             brewChoice.attr("data-info", JSON.stringify(response[i])); //adding complete data object to call on click
 
-
-            newCard.append(header);
-            header.append(brewName);
-            newCard.append(brewInfo);
-            newCard.append(brewType);
-            newCard.append(brewAddress);
-            newCard.append(brewCity);
-            newCard.append(brewPhone);
-            newCard.append(brewUrl);
             newCard.append(footer);
             footer.append(brewChoice);
 
 
-            $("#mainContainer").append(newCard); //appending New Cards to main
+            // $("#mainContainer").append(newCard); //appending New Cards to main
 
 
             // If/Else to call Link Preview for those breweries with websites; placeholder image for those without urls
@@ -88,7 +72,8 @@ function breweryInfo(searchZip) {
             if (response[i].website_url === "") { // the "" is from the openbrewery data object
 
                 var noURL = $("<img>").attr("src", "/images/drunkweb.png").width("150px").height("150px");
-                footer.append(noURL);
+                // newCard.append(noURL);
+                noURL.insertAfter($(".uk-card-header"));
 
             } else {
                 // linkPreview(response[i].website_url); //calls linkPreview function
@@ -110,7 +95,7 @@ function breweryInfo(searchZip) {
                     console.log(response);
 
                     var imageEl = $("<img>").attr("src", response.image).width("150px").height("150px");
-                    newCard.append(imageEl);
+                    newCard.after(imageEl);
                 });
             };
 
@@ -123,24 +108,13 @@ function breweryInfo(searchZip) {
         $(".selectBtn").click(function (event) {
             event.preventDefault();
 
-            var thisBrewery = $(this)[0].dataset.name; // gets brewery name saved in button dataset
-            // var count; // keeps count of the number of breweries saved in local storage for later access
+            // gets brewery name saved in button dataset
+            var thisBrewery = $(this)[0].dataset.name;
 
-            // if the brewery is already in the local favorites, leave this function
+            // if the brewery is already in the localStorage favorites, leave this function
             if (localStorage.getItem(thisBrewery)) {
                 return;
-            };
-
-            // if numBrew exists in local storage, add to numBrew; else create numBrew in local storage
-            // if (localStorage.getItem("numBrew")) {
-            //     count = localStorage.getItem("numBrew");
-            //     count++;
-            //     localStorage.setItem("numBrew", count);
-            // }
-            // else {
-            //     count = 1;
-            //     localStorage.setItem("numBrew", count);
-            // }
+            }
 
             // save this brewery to local storage
             localStorage.setItem(thisBrewery, $(this)[0].dataset.info);
@@ -176,9 +150,9 @@ $("#favoritesBtn").click(function (event) {  //need Favorites button
     event.preventDefault();
     console.log("hello");
     $("#mainContainer").empty();
-    
 
-    for(var i = 0 ; i < localStorage.length ; i++){
+
+    for (var i = 0; i < localStorage.length; i++) {
         var favObject = JSON.parse(localStorage.getItem(localStorage.key(i)));
         createCard(favObject);
     }
