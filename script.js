@@ -20,10 +20,10 @@ function breweryInfo(searchZip) {
             var header = $("<div>").attr("class", "uk-card-header"); //card header
             var brewName = $("<h3>").attr("id", "brewNameEL").attr("class", "uk-card-title uk-margin-remove-bottom").html(response[i].name);
             var brewInfo = $("<div>").attr("uk-card-body"); //card body
-            var brewType = $("<p>" + "<strong>Type: </strong>" + response[i].brewery_type + "</p>").attr("id", "brewType"); 
+            var brewType = $("<p>" + "<strong>Type: </strong>" + response[i].brewery_type + "</p>").attr("id", "brewType");
             var brewAddress = $("<p>" + "<strong>Address: </strong>" + response[i].street + "</p>").attr("id", "addressEl");
-            var brewCity = $("<p>" + "<strong>City: </strong>" + response[i].city + ", " + response[i].state + " " + response[i].postal_code + "</p>").attr("id", "cityEl"); 
-            var brewPhone = $("<p>" + "<strong>Phone: </strong>" + ("(" + response[i].phone.substring(0, 3) + ") " + response[i].phone.substring(3, 6) + "-" + response[i].phone.substring(6, 10)) +"</p>").attr("id", "phoneEl");
+            var brewCity = $("<p>" + "<strong>City: </strong>" + response[i].city + ", " + response[i].state + " " + response[i].postal_code + "</p>").attr("id", "cityEl");
+            var brewPhone = $("<p>" + "<strong>Phone: </strong>" + ("(" + response[i].phone.substring(0, 3) + ") " + response[i].phone.substring(3, 6) + "-" + response[i].phone.substring(6, 10)) + "</p>").attr("id", "phoneEl");
             var brewUrl = $("<a>").attr("href", response[i].website_url).attr("id", "webEl").html(response[i].website_url)
             var footer = $("<div>").attr("class", "uk-card-footer"); //card footer
             //adding select button and attaching response data to data-set attribute
@@ -44,71 +44,83 @@ function breweryInfo(searchZip) {
             newCard.append(brewUrl);
             newCard.append(footer);
             footer.append(brewChoice);
-     
+
 
             $("#mainContainer").append(newCard); //appending New Cards to main
 
-           
-           // If/Else to call Link Preview for those breweries with websites; placeholder image for those without urls
+
+            // If/Else to call Link Preview for those breweries with websites; placeholder image for those without urls
 
             if (response[i].website_url === "") { // the "" is from the openbrewery data object
-               
-                var noURL = $("<img>").attr("src", "/Users/taylorceneviva/project-one/images/drunkweb.png").width("150px").height("150px"); 
+
+                var noURL = $("<img>").attr("src", "/images/drunkweb.png").width("150px").height("150px");
                 footer.append(noURL);
 
             } else {
-                linkPreview(response[i].website_url); //calls linkPreview function
+                // linkPreview(response[i].website_url); //calls linkPreview function
+                console.log("link preview for " + response[i].name);
             };
 
-                            //appends website image given url using link preview api
-                            function linkPreview(barLink) {
-                                // link-preview api key and query
-                                var linkApiKey = "add99689022bb0b11c5fd0a126838bc8";
-                                var linkQuery = "http://api.linkpreview.net/?key=" + linkApiKey + "&q=" + barLink;
-                                console.log(linkQuery);
+            //appends website image given url using link preview api
+            function linkPreview(barLink) {
+                // link-preview api key and query
+                var linkApiKey = "add99689022bb0b11c5fd0a126838bc8";
+                var linkQuery = "http://api.linkpreview.net/?key=" + linkApiKey + "&q=" + barLink;
+                console.log(linkQuery);
 
-                                // ajax query to get the link-preview image from the website
-                                $.ajax({
-                                    url: linkQuery,
-                                    method: "GET"
-                                }).then(function (response) {
-                                    console.log(response);
+                // ajax query to get the link-preview image from the website
+                $.ajax({
+                    url: linkQuery,
+                    method: "GET"
+                }).then(function (response) {
+                    console.log(response);
 
-                                    var imageEl = $("<img>").attr("src", response.image).width("150px").height("150px"); 
-                                    newCard.append(imageEl);
-                                });
-                            };
+                    var imageEl = $("<img>").attr("src", response.image).width("150px").height("150px");
+                    newCard.append(imageEl);
+                });
+            };
 
 
         }; //end loop
-        
+
 
         // Adding items to favorite's with click event
-       
+
         $(".selectBtn").click(function (event) {
-
             event.preventDefault();
-            // console.log("hello");
+            var thisBrewery = $(this)[0].dataset.name;
+            var count;
 
-            var count = localStorage.getItem(count);// NOT WORKING. need count function to count every time select button clicked. that sets the index position on the favorites list
-                //  if (count === null) {
-                //     count = 1;
-                // } else {
-                //     count++;
-                //  };
+            if(localStorage.getItem(thisBrewery)){
+                return;
+            };
 
-            //capturing brew name from data attribute; storing name in array
-            var saveName = $(this).attr("data-name"); //This IS working correctly
-                console.log(saveName);
-            saveList.push(saveName);  //This IS working correctly
-                console.log(saveList);
-        
-            // save in localStorage
-            localStorage.setItem(count, saveName); //NOT WORKING correctly. Replaces the value at count every time. So count is always 1
-        
+            if(localStorage.getItem("numBrew")){
+                count = localStorage.getItem("numBrew");
+                count++;
+                localStorage.setItem("numBrew" , count);
+            }
+            else{
+                count = 0;
+                localStorage.setItem("numBrew" , count);
+            }
+            
+            localStorage.setItem(thisBrewery, count);
+           
+            // var count = localStorage.getItem(count);// NOT WORKING. need count function to count every time select button clicked. that sets the index position on the favorites list
+
+            // //capturing brew name from data attribute; storing name in array
+            // var saveName = $(this).attr("data-name"); //This IS working correctly
+            // console.log(saveName);
+            // saveList.push(saveName);  //This IS working correctly
+            // console.log(saveList);
+
+            // // save in localStorage
+            // localStorage.setItem(count, saveName); //NOT WORKING correctly. Replaces the value at count every time. So count is always 1
+
         }); //end select button click handler function
     });
-    
+
 };
 
 
@@ -123,8 +135,8 @@ $("#searchBtn").click(function (event) {
     //emptying html elements from previous search
     $("#mainContainer").empty();
 
-        searchZip = $("input").val().trim(); //reads the input from the user
-        breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
+    searchZip = $("input").val().trim(); //reads the input from the user
+    breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
 
 }); //end search button click handler function
 
@@ -149,3 +161,4 @@ $("#favoritesBtn").click(function (event, saveList) {  //need Favorites button
 
 }); //end Favorites button function
 
+breweryInfo("43215");
