@@ -88,35 +88,28 @@ function breweryInfo(searchZip) {
 
         $(".selectBtn").click(function (event) {
             event.preventDefault();
-            var thisBrewery = $(this)[0].dataset.name;
-            var count;
 
-            if(localStorage.getItem(thisBrewery)){
+            var thisBrewery = $(this)[0].dataset.name; // gets brewery name saved in button dataset
+            var count; // keeps count of the number of breweries saved in local storage for later access
+
+            // if the brewery is already in the local favorites, leave this function
+            if (localStorage.getItem(thisBrewery)) {
                 return;
             };
 
-            if(localStorage.getItem("numBrew")){
+            // if numBrew exists in local storage, add to numBrew; else create numBrew in local storage
+            if (localStorage.getItem("numBrew")) {
                 count = localStorage.getItem("numBrew");
                 count++;
-                localStorage.setItem("numBrew" , count);
+                localStorage.setItem("numBrew", count);
             }
-            else{
+            else {
                 count = 0;
-                localStorage.setItem("numBrew" , count);
+                localStorage.setItem("numBrew", count);
             }
-            
+
+            // save this brewery to local storage
             localStorage.setItem(thisBrewery, count);
-           
-            // var count = localStorage.getItem(count);// NOT WORKING. need count function to count every time select button clicked. that sets the index position on the favorites list
-
-            // //capturing brew name from data attribute; storing name in array
-            // var saveName = $(this).attr("data-name"); //This IS working correctly
-            // console.log(saveName);
-            // saveList.push(saveName);  //This IS working correctly
-            // console.log(saveList);
-
-            // // save in localStorage
-            // localStorage.setItem(count, saveName); //NOT WORKING correctly. Replaces the value at count every time. So count is always 1
 
         }); //end select button click handler function
     });
