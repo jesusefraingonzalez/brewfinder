@@ -6,21 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/css/uikit.min.css" />
+
+    <!--Google Font Link-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Work+Sans&display=swap" rel="stylesheet">    <link rel="stylesheet" href="style.css">    
     <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit-icons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.10/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.10/dist/js/uikit-icons.min.js"></script> 
+    <!-- Emoji Link -->
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+    <!-- stylesheet -->
+
     <link rel="stylesheet" href="style.css">
-    <title>Brews & Bucks</title>
+    <title>BREWFINDER</title>
 </head>
 
 <body>
 
-    <div class="uk-container .uk-align-center">
-        <header>
-            <h1 class="h1">Brews & Bucks</h1>
-        </header>
-    </div>
+
 
 
     <!-- Basic Pseudo-Code -->
@@ -36,77 +39,81 @@ User selects brewery and receives message "Have fun & Stay Safe!"
 close or return option
 -->
 
-    <div class="uk-container .uk-align-center">
+
+    <div class="uk-container full-body">
         <header>
-            <h1 class="h1">Brews & Bucks</h1>
+            <h1 class="h1">BREWFINDER</h1>
+
+
         </header>
     </div>
 
 
 
     <div class="uk-container">
-        <form class="uk-search uk-search-default" id="search-module">
+        <div class="instructions"> 
+            <p> Enter your zipcode to find local Breweries! </p>
+        </div>
+        
+        <form class="uk-search uk-search-default shift" id="search-module">
             <span uk-search-icon></span>
             <input class="uk-search-input" type="input" placeholder="Search...">
         </form>
-        <button class="uk-button uk-button-default" value="search">Search</button>
+        <button class="uk-button uk-button-default search-btn" id="searchBtn" value="search">Search</button>
+        
+        
+        <button class="uk-button uk-button-default uk-align-right fav-btn" id ="favoritesBtn">Favorite Breweries</button>
+            <div class="uk-container uk-align-right" id="favorites"></div> <!--nested container to append favorites to-->
     </div>
-
-
-    <!-- Card Option one.. 3 separate sections (ex. brewery name, info, select brewery button-->
     <br>
 
-    <div class="uk-container">
+
+   <!-- <div class="uk-container">
         <div class="uk-card uk-card-default uk-width-1-2@m">
+
             <div class="uk-card-header">
                 <div class="uk-grid-small uk-flex-middle" uk-grid>
                     <div class="uk-width-expand">
                         <h3 class="uk-card-title uk-margin-remove-bottom"></h3>
                         <p class="uk-text-meta uk-margin-remove-top" id="brewNameEl">
-                            <!--<time datetime="2016-04-01T19:00">April 01, 2016</time>-->
+                            <time datetime="2016-04-01T19:00">April 01, 2016</time>
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="uk-card-body" id="brewType">
-                <p> Brewery Type: </p>
-            </div>
-            <div class="uk-card-body" id="addressEl">
-                <p> Address </p>
-            </div>
-            <div class="uk-card-body" id="phoneEl">
-                <p> Phone Number: </p>
-            </div>
-            <div class="uk-card-body" id="webEl">
-                <p>Website: </p>
-            </div>
-            <div class="uk-card-footer">
-                <a href="#" class="uk-button uk-button-text">select</a>
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="uk-container">
-        <div class="uk-card uk-card-default uk-width-1-2@m">
+
+           <div class="uk-card-body">
+                <p id="brewType"> Brewery Type: </p>
+                <p id="addressEl">Address:</p>
+                <p id="phoneEl">Phone Number: </p>
+                <p id="webEl">Website: </p>
+            </div>-->
+
+    <div class="uk-container" id ="mainContainer">
+        <div class="uk-card uk-margin uk-card-default uk-width-1-2@m">
             <div class="uk-card-header">
                 <div class="uk-grid-small uk-flex-middle" uk-grid>
-                    <div class="uk-width-expand">
-                        <h3 class="uk-card-title uk-margin-remove-bottom">Name of brewery here</h3>
-                        <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01,
-                                2016</time></p>
+                    <div class="uk-column-1-2 uk-column-divider">
+
                     </div>
                 </div>
             </div>
-            <div class="uk-card-body">
-                <p> Brewery info: ....... </p>
-            </div>
-            <div class="uk-card-footer">
-                <a href="#" class="uk-button uk-button-text">select</a>
-            </div>
         </div>
     </div>
 
+    <div class="div-footer">
+        <footer>
+            <div>
+                <p class="footer-text" >Built by: Efraín González, Taylor Ceneviva & Laura Parker <i class="em em-beers" aria-role="presentation" aria-label="CLINKING BEER MUGS"></i>
+                </p>
+            </div>
+        </footer>
+    </div>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    
     <script src="script.js"></script>
 </body>
 
