@@ -38,11 +38,9 @@ function breweryInfo(searchZip) {
         url: "https://api.openbrewerydb.org/breweries?by_postal=" + searchZip,
         method: "GET"
     }).then(function (response) {
-        // console.log(response);  
         for (var i = 0; i < response.length; i++) {
             //create data for brewery cards
             var newCard = createCard(response[i]);
-            console.log(newCard);
             var footer = $("<div>").attr("class", "uk-card-footer"); //card footer
 
             // adding select button and attaching response data to data-set attribute
