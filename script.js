@@ -7,7 +7,23 @@ var selectBrewery;
 var saveList = []; //empty array for list of previously chosen breweries
 
 //FUNCTIONS
+//appends website image given url using link preview api
+function linkPreview(barLink, footer) {
+    // link-preview api key and query
+    var linkApiKey = "add99689022bb0b11c5fd0a126838bc8";
+    var linkQuery = "http://api.linkpreview.net/?key=" + linkApiKey + "&q=" + barLink;
+    console.log(linkQuery);
 
+    // ajax query to get the link-preview image from the website
+    $.ajax({
+        url: linkQuery,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+        var imageEl = $("<img>").attr("src", response.image).attr("class", "uk-align-right").width("150px").height("150px");
+        footer.append(imageEl);
+    });
+};
 
 function createCard(card) {
     //create data for brewery cards
@@ -45,7 +61,6 @@ function breweryInfo(searchZip) {
         for (var i = 0; i < response.length; i++) {
             //create data for brewery cards
             var newCard = createCard(response[i]);
-
             var footer = $("<div>").attr("class", "uk-card-footer"); //card footer
 
             // adding select button and attaching response data to data-set attribute
@@ -57,40 +72,13 @@ function breweryInfo(searchZip) {
             footer.append(brewChoice);
             $("#mainContainer").append(newCard); //appending New Cards to main
 
-
             // If/Else to call Link Preview for those breweries with websites; placeholder image for those without urls
-
             if (response[i].website_url === "") { // the "" is from the openbrewery data object
-                var noURL = $("<img>").attr("src", "/images/drunkweb.png").attr("class","uk-align-right").width("150px").height("150px");
+                var noURL = $("<img>").attr("src", "/images/drunkweb.png").attr("class", "uk-align-right").width("150px").height("150px");
                 footer.append(noURL);
-            
-
             } else {
                 linkPreview(response[i].website_url, footer); //calls linkPreview function
-              
             };
-
-            //appends website image given url using link preview api
-            function linkPreview(barLink, footer) {
-                // link-preview api key and query
-                var linkApiKey = "add99689022bb0b11c5fd0a126838bc8";
-                var linkQuery = "http://api.linkpreview.net/?key=" + linkApiKey + "&q=" + barLink;
-                console.log(linkQuery);
-
-                // ajax query to get the link-preview image from the website
-                $.ajax({
-                    url: linkQuery,
-                    method: "GET"
-                }).then(function (response) {
-                    console.log(response);
-
-                    var imageEl = $("<img>").attr("src", response.image).attr("class","uk-align-right").width("150px").height("150px");
-                    footer.append(imageEl);
-              
-                });
-            };
-
-
         }; //end loop
 
 
@@ -129,10 +117,8 @@ $("#searchBtn").click(function (event) {
     $("#mainContainer").empty();
 
     fullZip = $("input").val().trim(); //reads the input from the user
-    var searchZip = fullZip.substring(0, 2);
-  //  console.log(searchZip);
+    var searchZip = fullZip.substring(0, 2); //reads the first few zipcode #s to generate from a wider search radius
     breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
-
 }); //end search button click handler function
 
 
@@ -144,19 +130,13 @@ $("#favoritesBtn").click(function (event) {  //need Favorites button
     event.preventDefault();
     $("#mainContainer").empty();
     $("#mainContainer").append('<h2 style="color: #f1e3bb">Favorites</h2>');
+
     // loops through all local storage keys and creates card for each favorite brewery
     for (var i = 0; i < localStorage.length; i++) {
         var favObject = JSON.parse(localStorage.getItem(localStorage.key(i)));
         var newCard = createCard(favObject);
-
-       
         $("#mainContainer").append(newCard);
-        
-      
     }
-
-  
-
 }); //end Favorites button function
 
 
