@@ -1,21 +1,29 @@
-/* Adjusts full body background color */
-.full-body{
+/* html body background color */
+html{
     background-color: #2a3842;
 }
 
 /* Edit H1 type, color & div margin */
 .h1 {
-margin-top: 20px;
+margin-top: 50px;
+margin-bottom: 50px;
 font-family: 'Rammetto One', cursive;
 color: #cebb6a;
+font-size: 80px;
+}
+
+/* page instructions */
+.instructions{
+    margin-left: auto;
+    font-family: 'Work Sans', sans-serif;
+    color: #f1e3bb;
+    font-size: 20px;
 }
 
 /* edit card background color & content */
 .uk-card{
     background-color: #f1e3bb;
     justify-content: center;
-
-    
 }
 
 /* more card styling, font & color */
@@ -23,12 +31,49 @@ color: #cebb6a;
 .card-type{
     color: #2a3842;
     font-family: 'Work Sans', sans-serif;
-
 }
 
-/* edit search bar color & text color */
+/* edit search bar/favorites btn color & text color */
+.fav-btn,
 .search-btn,
 .form{
     background-color: #af5121;
     color: #f1e3bb;
+}
+/* Footer edits */
+.div-footer{
+    width: auto;
+    margin-top: 100px;
+    margin-bottom: 0px;
+    background-color: #2a3842;
+}
+
+.footer-text{
+text-align:center ;
+padding-bottom: 20px;
+}
+
+/* mainContainer typeface/color */
+
+#mainContainer{
+    font-family: 'Work Sans', sans-serif;
+    color: #2a3842;   
+}
+
+/* Footer emoji style */
+.em{
+    margin-left: 10px;
+}
+
+a,
+p{
+    margin-left: 40px;
+}
+
+.shift{
+    margin-left: 40px;
+}
+
+.selectBtn{
+    border-color: #2a3842;
 }
