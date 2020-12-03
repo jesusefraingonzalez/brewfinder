@@ -150,3 +150,5 @@ $("#favoritesBtn").click(function (event) {  //need Favorites button
 }); //end Favorites button function
 
 breweryInfo("43215");
+
+
