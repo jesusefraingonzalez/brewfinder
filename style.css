@@ -73,3 +73,7 @@ p{
 .shift{
     margin-left: 40px;
 }
+
+.selectBtn{
+    border-color: #2a3842;
+}
