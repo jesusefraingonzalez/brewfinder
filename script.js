@@ -41,6 +41,7 @@ function breweryInfo(searchZip) {
         for (var i = 0; i < response.length; i++) {
             //create data for brewery cards
             var newCard = createCard(response[i]);
+
             var footer = $("<div>").attr("class", "uk-card-footer"); //card footer
 
             // adding select button and attaching response data to data-set attribute
@@ -57,11 +58,11 @@ function breweryInfo(searchZip) {
 
             if (response[i].website_url === "") { // the "" is from the openbrewery data object
                 var noURL = $("<img>").attr("src", "/images/drunkweb.png").width("150px").height("150px");
-                // newCard.append(noURL);
+                //newCard.append(noURL);
                 noURL.insertAfter($(".uk-card-header"));
             } else {
-                // linkPreview(response[i].website_url); //calls linkPreview function
-                console.log("link preview for " + response[i].name);
+                linkPreview(response[i].website_url); //calls linkPreview function
+               // console.log("link preview for " + response[i].name);
             };
 
             //appends website image given url using link preview api
@@ -79,7 +80,7 @@ function breweryInfo(searchZip) {
                     console.log(response);
 
                     var imageEl = $("<img>").attr("src", response.image).width("150px").height("150px");
-                    newCard.after(imageEl);
+                    imageEl.insertAfter($(".uk-card-header"))
                 });
             };
 
