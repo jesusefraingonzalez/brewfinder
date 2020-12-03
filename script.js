@@ -84,8 +84,8 @@ function breweryInfo(searchZip) {
             // If/Else to call Link Preview for those breweries with websites; placeholder image for those without urls
             if (response[i].website_url === "") { // the "" is from the openbrewery data object
 
-                var noURL = $("<img>").attr("src", "/images/drunkweb.png").width("150px").height("150px");
-                newCard.append(noURL);
+                var noURL = $("<img>").attr("src", "./images/drunkweb.png").width("150px").height("150px");
+                footer.append(noURL);
 
 
             } else {
