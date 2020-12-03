@@ -7,6 +7,8 @@ var selectBrewery;
 var saveList = []; //empty array for list of previously chosen breweries
 
 //FUNCTIONS
+
+
 function createCard(card) {
     //create data for brewery cards
     var newCard = $("<div>").attr("class", "uk-card uk-card-default uk-width-1-2@m"); //card container
@@ -33,6 +35,8 @@ function createCard(card) {
     return newCard;
 }
 
+
+
 function breweryInfo(searchZip) {
     $.ajax({
         url: "https://api.openbrewerydb.org/breweries?by_postal=" + searchZip,
@@ -58,15 +62,16 @@ function breweryInfo(searchZip) {
 
             if (response[i].website_url === "") { // the "" is from the openbrewery data object
                 var noURL = $("<img>").attr("src", "/images/drunkweb.png").width("150px").height("150px");
-                //newCard.append(noURL);
-                noURL.insertAfter($(".uk-card-header"));
+                footer.append(noURL);
+            
+
             } else {
-                linkPreview(response[i].website_url); //calls linkPreview function
-               // console.log("link preview for " + response[i].name);
+                linkPreview(response[i].website_url, footer); //calls linkPreview function
+              
             };
 
             //appends website image given url using link preview api
-            function linkPreview(barLink) {
+            function linkPreview(barLink, footer) {
                 // link-preview api key and query
                 var linkApiKey = "add99689022bb0b11c5fd0a126838bc8";
                 var linkQuery = "http://api.linkpreview.net/?key=" + linkApiKey + "&q=" + barLink;
@@ -80,12 +85,14 @@ function breweryInfo(searchZip) {
                     console.log(response);
 
                     var imageEl = $("<img>").attr("src", response.image).width("150px").height("150px");
-                    imageEl.insertAfter($(".uk-card-header"))
+                    footer.append(imageEl);
+              
                 });
             };
 
 
         }; //end loop
+
 
 
         // Adding items to favorite's with click event
@@ -117,7 +124,7 @@ function breweryInfo(searchZip) {
 
 // click-handler for initiating search and clearing the main container from previous searches
 $("#searchBtn").click(function (event) {
-
+    event.preventDefault();
     //emptying html elements from previous search
     $("#mainContainer").empty();
 
@@ -141,13 +148,11 @@ $("#favoritesBtn").click(function (event) {  //need Favorites button
         var newCard = createCard(favObject);
 
         $("#mainContainer").append(newCard);
-        // $("#favorites").append(newCard);
+      
     }
 
-    // $("#favorites").append.favList //appending to Favorites div
+  
 
 }); //end Favorites button function
-
-breweryInfo("43215");
 
 
