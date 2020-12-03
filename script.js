@@ -31,7 +31,7 @@ function createCard(card) {
     newCard.append(brewPhone);
     newCard.append(brewUrl);
     newCard.append(footer);
-
+    newCard.css("margin", "20px");
     return newCard;
 }
 
