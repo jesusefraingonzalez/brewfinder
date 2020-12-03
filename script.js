@@ -27,7 +27,7 @@ function breweryInfo(searchZip) {
             var brewUrl = $("<a>").attr("href", response[i].website_url).attr("id", "webEl").html(response[i].website_url)
             var footer = $("<div>").attr("class", "uk-card-footer"); //card footer
             //adding select button and attaching response data to data-set attribute
-            var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn").text("Add to Favorites"); //.attr("data-set", response[i]); 
+            var brewChoice = $("<button>").attr("class", "uk-button uk-button-default selectBtn").text("Add to Favorites"); //.attr("data-set", response[i]); 
 
             //var brewChoice = $("<button>").attr("class", "uk-button uk-button-default").attr("class", "selectBtn"); 
             brewChoice.attr("data-name", response[i].name); //adding brew name data attribute to store on click
