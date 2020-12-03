@@ -128,7 +128,9 @@ $("#searchBtn").click(function (event) {
     //emptying html elements from previous search
     $("#mainContainer").empty();
 
-    searchZip = $("input").val().trim(); //reads the input from the user
+    fullZip = $("input").val().trim(); //reads the input from the user
+    var searchZip = fullZip.substring(0, 2);
+  //  console.log(searchZip);
     breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
 
 }); //end search button click handler function
