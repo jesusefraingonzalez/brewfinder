@@ -12,12 +12,18 @@ color: #cebb6a;
 font-size: 80px;
 }
 
+/* page instructions */
+.instructions{
+    margin-left: auto;
+    font-family: 'Work Sans', sans-serif;
+    color: #f1e3bb;
+    font-size: 20px;
+}
+
 /* edit card background color & content */
 .uk-card{
     background-color: #f1e3bb;
     justify-content: center;
-
-    
 }
 
 /* more card styling, font & color */
@@ -25,7 +31,6 @@ font-size: 80px;
 .card-type{
     color: #2a3842;
     font-family: 'Work Sans', sans-serif;
-
 }
 
 /* edit search bar/favorites btn color & text color */
@@ -35,28 +40,36 @@ font-size: 80px;
     background-color: #af5121;
     color: #f1e3bb;
 }
+/* Footer edits */
+.div-footer{
+    width: auto;
+    margin-top: 100px;
+    margin-bottom: 0px;
+    background-color: #2a3842;
+}
 
 .footer-text{
 text-align:center ;
 padding-bottom: 20px;
 }
 
-.div-footer{
-width: auto;
-margin-top: 100px;
-margin-bottom: 0px;
-background-color: #2a3842;
-}
-
-.instructions{
-margin-left: auto;
-font-family: 'Work Sans', sans-serif;
-color: #f1e3bb;
-font-size: 20px;
-}
+/* mainContainer typeface/color */
 
 #mainContainer{
     font-family: 'Work Sans', sans-serif;
-    color: #2a3842;
-    
+    color: #2a3842;   
+}
+
+/* Footer emoji style */
+.em{
+    margin-left: 10px;
+}
+
+a,
+p{
+    margin-left: 40px;
+}
+
+.shift{
+    margin-left: 40px;
 }
