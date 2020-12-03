@@ -7,6 +7,8 @@ var selectBrewery;
 var saveList = []; //empty array for list of previously chosen breweries
 
 //FUNCTIONS
+
+
 function createCard(card) {
     //create data for brewery cards
     var newCard = $("<div>").attr("class", "uk-card uk-card-default uk-width-1-2@m"); //card container
@@ -35,16 +37,17 @@ function createCard(card) {
     return newCard;
 }
 
+
+
 function breweryInfo(searchZip) {
     $.ajax({
         url: "https://api.openbrewerydb.org/breweries?by_postal=" + searchZip,
         method: "GET"
     }).then(function (response) {
-        // console.log(response);  
         for (var i = 0; i < response.length; i++) {
             //create data for brewery cards
             var newCard = createCard(response[i]);
-            console.log(newCard);
+
             var footer = $("<div>").attr("class", "uk-card-footer"); //card footer
 
             // adding select button and attaching response data to data-set attribute
@@ -64,12 +67,12 @@ function breweryInfo(searchZip) {
                 // newCard.append(noURL);
                 // noURL.insertAfter($(".uk-card-header"));
             } else {
-                // linkPreview(response[i].website_url); //calls linkPreview function
-                console.log("link preview for " + response[i].name);
+                linkPreview(response[i].website_url, footer); //calls linkPreview function
+              
             };
 
             //appends website image given url using link preview api
-            function linkPreview(barLink) {
+            function linkPreview(barLink, footer) {
                 // link-preview api key and query
                 var linkApiKey = "add99689022bb0b11c5fd0a126838bc8";
                 var linkQuery = "http://api.linkpreview.net/?key=" + linkApiKey + "&q=" + barLink;
@@ -82,13 +85,15 @@ function breweryInfo(searchZip) {
                 }).then(function (response) {
                     console.log(response);
 
-                    var imageEl = $("<img>").attr("src", response.image).width("150px").height("150px");
-                    newCard.after(imageEl);
+                    var imageEl = $("<img>").attr("src", response.image).attr("class","uk-align-right").width("150px").height("150px");
+                    footer.append(imageEl);
+              
                 });
             };
 
 
         }; //end loop
+
 
 
         // Adding items to favorite's with click event
@@ -120,11 +125,13 @@ function breweryInfo(searchZip) {
 
 // click-handler for initiating search and clearing the main container from previous searches
 $("#searchBtn").click(function (event) {
-
+    event.preventDefault();
     //emptying html elements from previous search
     $("#mainContainer").empty();
 
-    searchZip = $("input").val().trim(); //reads the input from the user
+    fullZip = $("input").val().trim(); //reads the input from the user
+    var searchZip = fullZip.substring(0, 2);
+  //  console.log(searchZip);
     breweryInfo(searchZip); //calls the function breweryInfo to generate brewery data
 
 }); //end search button click handler function
@@ -137,20 +144,20 @@ $("#searchBtn").click(function (event) {
 $("#favoritesBtn").click(function (event) {  //need Favorites button
     event.preventDefault();
     $("#mainContainer").empty();
-
+    $("#mainContainer").append('<h2 style="color: #f1e3bb">Favorites</h2>');
     // loops through all local storage keys and creates card for each favorite brewery
     for (var i = 0; i < localStorage.length; i++) {
         var favObject = JSON.parse(localStorage.getItem(localStorage.key(i)));
         var newCard = createCard(favObject);
 
+       
         $("#mainContainer").append(newCard);
-        // $("#favorites").append(newCard);
+        
+      
     }
 
-    // $("#favorites").append.favList //appending to Favorites div
+  
 
 }); //end Favorites button function
-
-breweryInfo("43215");
 
 
