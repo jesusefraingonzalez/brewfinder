@@ -61,7 +61,7 @@ function breweryInfo(searchZip) {
             // If/Else to call Link Preview for those breweries with websites; placeholder image for those without urls
 
             if (response[i].website_url === "") { // the "" is from the openbrewery data object
-                var noURL = $("<img>").attr("src", "/images/drunkweb.png").width("150px").height("150px");
+                var noURL = $("<img>").attr("src", "/images/drunkweb.png").attr("class","uk-align-right").width("150px").height("150px");
                 footer.append(noURL);
             
 
@@ -84,7 +84,7 @@ function breweryInfo(searchZip) {
                 }).then(function (response) {
                     console.log(response);
 
-                    var imageEl = $("<img>").attr("src", response.image).width("150px").height("150px");
+                    var imageEl = $("<img>").attr("src", response.image).attr("class","uk-align-right").width("150px").height("150px");
                     footer.append(imageEl);
               
                 });
