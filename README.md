@@ -4,8 +4,9 @@
 <h5><i>With User Zipcode</i></h5>
 
 <h3>Description:</h3> 
-    Brewfinder is a simple application that returns a list of local breweries based on a user's zipcode.  When the application opens, the user is instructed to enter a zipcode to find local breweries.  A list of breweries within that zipcode appears below.  The brewery listings include name, type (see types list below), address, phone, and website (if available).  The data source for the brewery's listing information is Open Brewery DB (https://www.openbrewerydb.org/), a free dataset and API with public information on breweries, cideries, brewpubs, and bottleshops.  Additionally, an image from the brewery's website appears with the brewery listing to help familiarize the user with the brewery's brand, products, or experience.  The image is generated via LinkPreview, a free API that pulls images from external websites (https://my.linkpreview.net/). If an website is not available, a plcaeholder image is presented.
 
+
+        Brewfinder is a simple application that returns a list of local breweries based on a user's zipcode.  When the application opens, the user is instructed to enter a zipcode to find local breweries.  A list of breweries within that zipcode appears below.  The brewery listings include name, type (see types list below), address, phone, and website (if available).  The data source for the brewery's listing information is Open Brewery DB (https://www.openbrewerydb.org/), a free dataset and API with public information on breweries, cideries, brewpubs, and bottleshops.  Additionally, an image from the brewery's website appears with the brewery listing to help familiarize the user with the brewery's brand, products, or experience.  The image is generated via LinkPreview, a free API that pulls images from external websites (https://my.linkpreview.net/). If an website is not available, a plcaeholder image is presented.
     In addition to basic location information, Brewfinder identifies each "type" of brewery fromt the options below. This is one of the more unique features of the application enabling brew-enthusiats to learn about small and niche operators in their area. 
 
     <h5><i>Brewery "type" options & definitions:</i></h5> 
@@ -25,28 +26,21 @@
 
     Brewfinder utilizes JQuery to create html elements for each set of brewery information (name, type, address, phone, website); and, those information fields are appended to individual cards. Standard AJAX calls are used to populate the data and images needed for each listing. Styling for the cards and container elements of the application is provided by UIKit, which is the embedded CSS toolkit utilized by BrewFinder.  
 
-    The live site is found out:  https://lparker78.github.io/Thid-Party-API-s-Work-Day-Scheduler-BootCamp5/
+    The live site is found out:  https://jesusefraingonzalez.github.io/brewfinder/
 
 
 <h5>Partial Screenshots of User Experience</h5>
 
 <p>
-    <img src="/" width="350" height="350" />
+    <img src="/Brewfinder (1).png" width="350" height="350" />
 </p>
 
                
-<p> <img src="/" width="350" height="350" />
+<p> <img src="/Brewfinder.png" width="350" height="350" />
 </p>
 
 <p>
-    <img src="/" width="350" height="350" />
-</p>
-
-               
-<p> <img src="/" width="350" height="350" />
-</p>
-
-<p> <img src="/" width="350" height="350" />
+    <img src="/Brewfinder (2).png" width="350" height="350" />
 </p>
 
 
