@@ -25,28 +25,21 @@
 
     Brewfinder utilizes JQuery to create html elements for each set of brewery information (name, type, address, phone, website); and, those information fields are appended to individual cards. Standard AJAX calls are used to populate the data and images needed for each listing. Styling for the cards and container elements of the application is provided by UIKit, which is the embedded CSS toolkit utilized by BrewFinder.  
 
-    The live site is found out:  https://lparker78.github.io/Thid-Party-API-s-Work-Day-Scheduler-BootCamp5/
+    The live site is found out:  https://jesusefraingonzalez.github.io/brewfinder/
 
 
 <h5>Partial Screenshots of User Experience</h5>
 
 <p>
-    <img src="/" width="350" height="350" />
+    <img src="/Brewfinder.png" width="350" height="350" />
 </p>
 
                
-<p> <img src="/" width="350" height="350" />
+<p> <img src="/Brewfinder (1).png" width="350" height="350" />
 </p>
 
 <p>
-    <img src="/" width="350" height="350" />
-</p>
-
-               
-<p> <img src="/" width="350" height="350" />
-</p>
-
-<p> <img src="/" width="350" height="350" />
+    <img src="/Brewfinder (2).png" width="350" height="350" />
 </p>
 
 
