@@ -31,11 +31,11 @@
 <h5>Partial Screenshots of User Experience</h5>
 
 <p>
-    <img src="/Brewfinder.png" width="350" height="350" />
+    <img src="/Brewfinder (1).png" width="350" height="350" />
 </p>
 
                
-<p> <img src="/Brewfinder (1).png" width="350" height="350" />
+<p> <img src="/Brewfinder.png" width="350" height="350" />
 </p>
 
 <p>
